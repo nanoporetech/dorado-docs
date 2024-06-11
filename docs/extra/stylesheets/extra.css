@@ -1,0 +1,78 @@
+/* Add customisations here */
+
+:root {
+    --dorado-pink: #e92063;
+    --dorado-red: #ef5552;
+    --dorado-deep-red: #ba1a4f;
+    /* --dorado-purple: #ab47bd; */
+    --dorado-purple: #bd53d0;
+    --dorado-deep-purple: #7e56c2;
+    --dorado-indigo: #4051b5;
+    --dorado-blue: #2094f3;
+    --dorado-light-blue: #02a6f2;
+    --dorado-cyan: #00bdd6;
+    --dorado-teal: #009485;
+    --dorado-green: #4cae4f;
+    --dorado-light-green: #8bc34b;
+    --dorado-lime: #cbdc38;
+    --dorado-yellow: #ffec3d;
+    --dorado-amber: #ffc105;
+    --dorado-orange: #ffa724;
+    --dorado-deep-orange: #ff6e42;
+    --dorado-brown: #795649;
+    --dorado-light-grey: #c7c7c7;
+    --dorado-grey: #757575;
+    --dorado-deep-grey: #515151;
+    --dorado-blue-grey: #546d78;
+    --dorado-black: #000000;
+    --dorado-white: #ffffff;
+}
+
+
+/*
+Keyword.Constant = .kc
+Keyword.Namespace = .kn
+Keyword.Reserved = .kr
+Keyword.Type = .kt
+*/
+
+[data-md-color-scheme="default"] code .kr {
+    color: var(--dorado-deep-grey) !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] code .kr {
+    color: var(--dorado-light-grey) !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="default"] code .kn {
+    color: var(--dorado-deep-orange) !important;
+    font-weight: regular;
+}
+
+[data-md-color-scheme="slate"] code .kn {
+    color: var(--dorado-deep-orange) !important;
+    font-weight: regular;
+}
+
+[data-md-color-scheme="default"] code .kc {
+    /* color: var(--dorado-cyan) !important; */
+    color: var(--dorado-purple) !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="slate"] code .kc {
+    color: var(--dorado-purple) !important;
+    font-weight: bold;
+}
+
+[data-md-color-scheme="default"] code .kt {
+    color: var(--dorado-red) !important;
+    font-weight: regular;
+}
+
+[data-md-color-scheme="slate"] code .kt {
+    color: var(--dorado-red) !important;
+    font-weight: regular;
+}

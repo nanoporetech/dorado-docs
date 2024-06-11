@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools >= 65.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+
+[project]
+name = "dorado_docs"
+authors = [
+    { name = "Oxford Nanopore Technologies plc", email = "support@nanoporetech.com" },
+]
+readme = "README.md"
+requires-python = "~= 3.8"
+description = "Dorado Documentation"
+version = "0.1.0" # The version of this project doesn't matter
+keywords = ['nanopore', 'documentation']
+classifiers = [
+    'Environment :: Console',
+    'Development Status :: 3 - Alpha',
+    'Intended Audience :: Developers',
+    'Intended Audience :: Science/Research',
+    'Natural Language :: English',
+    'Programming Language :: Python :: 3',
+    'Topic :: Scientific/Engineering :: Bio-Informatics',
+    'Topic :: Documentation',
+]
+
+dependencies = ["mkdocs-material~=9.5.42", "mkdocs-macros-plugin~=1.3.6"]
+
+[project.optional-dependencies]
+dev = ["pre-commit"]
+
+[project.urls]
+Homepage = "https://github.com/nanoporetech/dorado-docs"
+Issues = "https://github.com/nanoporetech/dorado/issues"
+Documentation = "https://github.com/nanoporetech/dorado-docs"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# Register the dorado lexer with pygments. Check with `pygmentize -L lexers | grep -A1 dorado`
+[project.entry-points."pygments.lexers"]
+dorado = "dorado_docs:DoradoBashLexer"

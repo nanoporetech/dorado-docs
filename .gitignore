@@ -1,0 +1,13 @@
+*~
+.DS_Store
+.idea/
+.vs
+.vscode
+
+__pycache__/
+site/
+*.egg-info/
+
+public/
+site/
+build/

@@ -1,0 +1,30 @@
+stages:
+  - test
+  - deploy
+
+test:
+  image: ${CI_REGISTRY}/traque/ont-docker-base/ont-base-python:3.10
+  stage: test
+  before_script:
+    - pip install .
+  script:
+    - pygmentize -L lexers
+    - pygmentize -L lexers | grep "dorado"
+    - mkdocs build --strict --verbose --site-dir test
+  rules:
+    - if: $CI_COMMIT_REF_NAME != $CI_DEFAULT_BRANCH
+
+pages:
+  image: ${CI_REGISTRY}/traque/ont-docker-base/ont-base-python:3.10
+  stage: deploy
+  before_script:
+    - pip install .
+  script:
+    - pygmentize -L lexers
+    - pygmentize -L lexers | grep "dorado"
+    - mkdocs build --strict --verbose --site-dir public
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH

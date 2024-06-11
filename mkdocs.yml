@@ -1,0 +1,147 @@
+site_name: Dorado Documentation
+site_url: !ENV READTHEDOCS_CANONICAL_URL
+
+# Adds the Github Link at top right
+repo_url: https://github.com/nanoporetech/dorado/
+repo_name: Dorado
+
+nav:
+  - index.md
+  - Models:
+      - Introduction: models/models.md
+      - Selection Complex: models/complex.md
+      - Downloading Models: models/downloader.md
+      - Models List: models/list.md
+  - Basecaller:
+      - Introduction: basecaller/basecall_overview.md
+      - Simplex: basecaller/simplex.md
+      - Duplex: basecaller/duplex.md
+      - Modifications: basecaller/mods.md
+      - Barcoding:
+          - Barcode Classification: barcoding/barcoding.md
+          - Custom Barcodes: barcoding/custom_barcodes.md
+          - Sample Sheet: barcoding/sample_sheet.md
+      - Alignment: basecaller/alignment.md
+      - Read Trimming: basecaller/read_trimming.md
+      - PolyA Estimation: basecaller/polya_estimation.md
+      - Details:
+          - Read Splitting: basecaller/read_splitting.md
+          - Moves Table: basecaller/move_table.md
+          - QScore: basecaller/qscore.md
+          - SAM Specification: basecaller/sam_spec.md
+  - Help:
+      - Troubleshooting: troubleshooting/troubleshooting.md
+      - FAQ: troubleshooting/faq.md
+  - Error Correction:
+      - Dorado Correct: correct/correct.md
+
+theme:
+  name: material
+  custom_dir: docs/extra/overrides # Used to add readthedocs version selector
+  features:
+    - navigation.instant # Do not fully reload pages
+    # - navigation.footer # Show pages at tabs at the top
+    # - navigation.tabs.sticky # Show tab name when scrolling down
+    # - navigation.tabs # Show pages at tabs at the top
+    - navigation.sections # Show docs groups as sections instead of nesting as tree
+    - navigation.top # Back to top button
+    - navigation.indexes # Makes the index of a section a page
+
+    - toc.integrate # Hide right-side toc pane
+
+    - search.suggest
+    - search.highlight
+    - search.share
+
+    - content.tabs.link
+    - content.code.annotate
+    - content.code.copy
+  language: en
+  logo: extra/assets/nanopore.logo.png
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+      primary: cyan
+      accent: blue
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+      primary: deep purple
+      accent: blue
+
+plugins:
+  - search
+  - macros:
+      verbose: false # Set to true to debug the `find` function
+
+extra_javascript:
+  - extra/javascript/readthedocs.js
+extra_css:
+  - extra/stylesheets/extra.css
+
+extra:
+  dorado:
+    version: "0.8.2"
+    code: https://github.com/nanoporetech/dorado/tree/release-v0.8/
+  mm2_docs: https://github.com/lh3/minimap2
+  github:
+    repo: https://github.com/nanoporetech/dorado
+    issues: https://github.com/nanoporetech/dorado/issues
+  social:
+    - icon: fontawesome/brands/github-alt
+      link: https://github.com/nanoporetech/dorado
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/nanopore
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/oxford-nanopore-technologies
+# Not collecting cookies via RTD
+# consent:
+#   title: Cookie consent
+#   description: >-
+#     We use cookies to recognize your repeated visits and preferences, as well
+#     as to measure the effectiveness of our documentation and whether users
+#     find what they're searching for. With your consent, you're helping us to
+#     make our documentation better.
+
+markdown_extensions:
+  - admonition # Add nice Note, Warning, Error areas
+  # Code-block syntax highlighting
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+      extend_pygments_lang:
+        - name: dorado
+          lang: dorado
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.caret # Adds ^^insert-tag^^ and ^superscript^
+  - pymdownx.mark # Adds ==mark-tag== for highlighting
+  - pymdownx.tilde # Adds ~~strike-through~~ and ~subscript~
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          # format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - def_list
+  - tables
