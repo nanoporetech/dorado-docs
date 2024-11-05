@@ -37,6 +37,7 @@ nav:
 
 theme:
   name: material
+  font: false
   custom_dir: docs/extra/overrides # Used to add readthedocs version selector
   features:
     - navigation.instant # Do not fully reload pages
@@ -61,27 +62,36 @@ theme:
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
+      primary: custom
+      accent: custom
+      scheme: ont
       toggle:
         icon: material/brightness-auto
         name: Switch to light mode
 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
-      scheme: default
+      primary: custom
+      accent: custom
+      scheme: ont
+      # scheme: default
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-      primary: cyan
-      accent: blue
+      # primary: cyan
+      # accent: blue
 
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
-      scheme: slate
+      primary: custom
+      accent: custom
+      scheme: ont-dark
+      # scheme: slate
       toggle:
         icon: material/brightness-4
         name: Switch to system preference
-      primary: deep purple
-      accent: blue
+      # primary: deep purple
+      # accent: blue
 
 plugins:
   - search
