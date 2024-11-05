@@ -1,78 +1,169 @@
-/* Add customisations here */
-
 :root {
-    --dorado-pink: #e92063;
-    --dorado-red: #ef5552;
-    --dorado-deep-red: #ba1a4f;
-    /* --dorado-purple: #ab47bd; */
-    --dorado-purple: #bd53d0;
-    --dorado-deep-purple: #7e56c2;
-    --dorado-indigo: #4051b5;
-    --dorado-blue: #2094f3;
-    --dorado-light-blue: #02a6f2;
-    --dorado-cyan: #00bdd6;
-    --dorado-teal: #009485;
-    --dorado-green: #4cae4f;
-    --dorado-light-green: #8bc34b;
-    --dorado-lime: #cbdc38;
-    --dorado-yellow: #ffec3d;
-    --dorado-amber: #ffc105;
-    --dorado-orange: #ffa724;
-    --dorado-deep-orange: #ff6e42;
-    --dorado-brown: #795649;
-    --dorado-light-grey: #c7c7c7;
-    --dorado-grey: #757575;
-    --dorado-deep-grey: #515151;
-    --dorado-blue-grey: #546d78;
-    --dorado-black: #000000;
-    --dorado-white: #ffffff;
+  color-scheme: light;
 }
 
+[data-md-color-scheme="ont"] {
+  --ont-theme-text: #455556;
+  --ont-theme-heading: #455556;
 
-/*
-Keyword.Constant = .kc
-Keyword.Namespace = .kn
-Keyword.Reserved = .kr
-Keyword.Type = .kt
-*/
+  --md-primary-fg-color: #00536b;
+  --md-primary-fg-color--light: #d2efef;
+  --md-primary-fg-color--dark: #276749;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #e2e8f0;
 
-[data-md-color-scheme="default"] code .kr {
-    color: var(--dorado-deep-grey) !important;
-    font-weight: bold;
+  --md-accent-fg-color: #0084a9;
+  --md-accent-fg-color--transparent: #e2e8f0;
+  --md-accent-bg-color: #f0efed;
+  --md-accent-bg-color--light: #e2e8f0;
+
+  --md-default-fg-color: #455556;
+  --md-default-fg-color--light: #4b5758;
+  --md-default-fg-color--lighter: #677b7c;
+  --md-default-fg-color--lightest: #7f9394;
+  --md-default-bg-color: #fff;
+  --md-default-bg-color--light: #fff;
+  --md-default-bg-color--lighter: #fff;
+  --md-default-bg-color--lightest: #fff;
+
+  --md-code-fg-color: #404e4f;
+  --md-code-bg-color: #F6F7F7;
+  --md-code-hl-color: #d2efef;
+  --md-code-hl-color--light: #d2efef;
+  --md-code-hl-number-color: #a41e1e;
+  --md-code-hl-special-color: #e5004d;
+  --md-code-hl-function-color: #a34ca9;
+  --md-code-hl-constant-color: #5038d1;
+  --md-code-hl-keyword-color: #00536b;
+  --md-code-hl-string-color: #005066;
+  --md-code-hl-name-color: #542bab;
+  --md-code-hl-operator-color: #4b5758;
+  --md-code-hl-punctuation-color: #4b5758;
+  --md-code-hl-comment-color: #4b5758;
+  --md-code-hl-generic-color: #4b5758;
+  --md-code-hl-variable-color: #4b5758;
+
+  --md-typeset-color: #455556;
+  --md-typeset-a-color: #00536b;
+  --md-typeset-del-color: #f44336;
+  --md-typeset-ins-color: #2ecc71;
+  --md-typeset-kbd-color: #fafafa;
+  --md-typeset-kbd-accent-color: #ffffff;
+  --md-typeset-kbd-border-color: #b8b8b8;
+  --md-typeset-table-color: #404e4f;;
+  --md-typeset-table-color--light: #EFF9F9;
+
+  --md-admonition-fg-color: #455556;
+  --md-admonition-bg-color: #fff;
+
+  --md-warning-fg-color: #0e0e0e;
+  --md-warning-bg-color: #fff9cc;
+
+  --md-footer-fg-color: #fff;
+  --md-footer-fg-color--light: #fff;
+  --md-footer-fg-color--lighter: #fff;
+  --md-footer-bg-color: #00536b;
+  --md-footer-bg-color--dark: #00536b;
+
+  --md-mermaid-node-bg-color: #fff;
 }
 
-[data-md-color-scheme="slate"] code .kr {
-    color: var(--dorado-light-grey) !important;
-    font-weight: bold;
+[data-md-color-scheme="ont-dark"] {
+  --ont-theme-text: #cbd5e0;
+  --ont-theme-heading: #edf2f7;
+
+  --md-primary-fg-color: #00536b;
+  --md-primary-fg-color--light: #434190;
+  --md-primary-fg-color--dark: #a3bffa;
+  --md-primary-bg-color: #fff;
+  --md-primary-bg-color--light: #fff;
+
+  --md-accent-fg-color: #007496;
+  --md-accent-fg-color--transparent: #718096;
+  --md-accent-bg-color: #1a202c;
+  --md-accent-bg-color--light: #718096;
+
+  --md-default-fg-color: #cbd5e0;
+  --md-default-fg-color--light: #cbd5e0;
+  --md-default-fg-color--lighter: #cbd5e0;
+  --md-default-fg-color--lightest: #cbd5e0;
+  --md-default-bg-color: #1a202c;
+  --md-default-bg-color--light: #1a202c;
+  --md-default-bg-color--lighter: #1a202c;
+  --md-default-bg-color--lightest: #1a202c;
+
+  --md-code-fg-color: #cbd5e0;
+  --md-code-bg-color: #001a21;
+  --md-code-hl-color: #1a202c;
+  --md-code-hl-color--light: #03222b;
+
+  --md-code-hl-number-color: #cbd5e0;
+  --md-code-hl-special-color: #e5004d;
+  --md-code-hl-function-color: #a34ca9;
+  --md-code-hl-constant-color: #a797e8;
+  --md-code-hl-keyword-color: #00b7eb;
+  --md-code-hl-string-color: #a3bffa;
+  --md-code-hl-name-color: #a3bffa;
+  --md-code-hl-operator-color: #cbd5e0;
+  --md-code-hl-punctuation-color: #cbd5e0;
+  --md-code-hl-comment-color: #cbd5e0;
+  --md-code-hl-generic-color: #cbd5e0;
+  --md-code-hl-variable-color: #cbd5e0;
+
+  --md-typeset-color: #cbd5e0;
+  --md-typeset-a-color: #00bbf0;
+  --md-typeset-del-color: #f4a6a6;
+  --md-typeset-ins-color: #a6f4c4;
+  --md-typeset-kbd-color: #fafafa;
+  --md-typeset-kbd-accent-color: #ffffff;
+  --md-typeset-kbd-border-color: #b8b8b8;
+  --md-typeset-table-color: #cbd5e053;
+  --md-typeset-table-color--light: #001a21;
+
+  --md-admonition-fg-color: #cbd5e0;
+  --md-admonition-bg-color: #1a202c;
+
+  --md-warning-fg-color: #0e0e0e;
+  --md-warning-bg-color: #fff9cc;
+
+  --md-footer-fg-color: #fff;
+  --md-footer-fg-color--light: #fff;
+  --md-footer-fg-color--lighter: #fff;
+  --md-footer-bg-color: #00536b;
+  --md-footer-bg-color--dark: #00536b;
+
+  --md-mermaid-node-bg-color: #1a202c;
 }
 
-[data-md-color-scheme="default"] code .kn {
-    color: var(--dorado-deep-orange) !important;
-    font-weight: regular;
+body {
+  color: var(--ont-theme-text);
 }
 
-[data-md-color-scheme="slate"] code .kn {
-    color: var(--dorado-deep-orange) !important;
-    font-weight: regular;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: var(--ont-theme-heading);
 }
 
-[data-md-color-scheme="default"] code .kc {
-    /* color: var(--dorado-cyan) !important; */
-    color: var(--dorado-purple) !important;
-    font-weight: bold;
+.md-header__button.md-logo {
+  border-radius: 50%;
+  background-color: white;
+  margin: 0.2rem;
+  padding: 0.2rem;
 }
 
-[data-md-color-scheme="slate"] code .kc {
-    color: var(--dorado-purple) !important;
-    font-weight: bold;
+.md-header__button.md-logo img {
+  height: 2rem;
 }
 
-[data-md-color-scheme="default"] code .kt {
-    color: var(--dorado-red) !important;
-    font-weight: regular;
+.md-typeset a {
+  text-decoration: underline;
 }
 
-[data-md-color-scheme="slate"] code .kt {
-    color: var(--dorado-red) !important;
-    font-weight: regular;
+.md-source__facts {
+  opacity: 1;
 }
