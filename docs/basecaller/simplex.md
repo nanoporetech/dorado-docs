@@ -2,8 +2,8 @@
 
 ## Quick Start
 
-To run Dorado basecalling, using the [automatically downloaded]({{find("complex")}}) `hac` model on a directory of
-POD5 files or a single POD5 file use:
+To run Dorado basecalling, using the [automatically downloaded]({{find("complex")}}) `hac` model
+on a directory of POD5 files or a single POD5 file use:
 
 ```dorado
 dorado basecaller hac pod5s/ > calls.bam
@@ -15,13 +15,6 @@ To basecall a single file, simply replace the directory `pod5s/` with a path to 
 dorado basecaller hac /path/to/reads.pod5 > calls.bam
 ```
 
-To basecall all reads in a nested directory structure [recursively]({{find("basecall_overview")}}#data-ingest)
-use `-r / --recursive`:
-
-```dorado
-dorado basecaller hac data/ --recursive  > calls.bam
-```
-
 To automatically download and use the `fast` or `sup` models try the following:
 
 ```dorado
@@ -30,7 +23,8 @@ dorado basecaller sup  pod5s/ > calls.bam
 ```
 
 If you have a model that has already been [downloaded]({{find("downloader")}}) you can specify that
-**simplex** model using a path.
+**simplex** model using a path. For more information on how models are downloaded and how they
+can be re-used please see the [downloader documentation]({{find("downloader")}}#downloading-models).
 
 ```dorado
 dorado basecaller /path/to/simplex_model/ pod5s/ > calls.bam
@@ -39,11 +33,37 @@ dorado basecaller /path/to/simplex_model/ pod5s/ > calls.bam
 ### Adding Modified Bases
 
 To add modified base basecalling extend the [model complex]({{find("complex")}}) or refer to
-modified basecalling [usage guide]({{find("mods")}}) for more details.
+modified basecalling [usage guide]({{find("mods")}}#usage) for more details on the other options available.
 
 ```dorado
 dorado basecaller hac,5mC     pod5s/ > calls.bam
 dorado basecaller sup,6mA,5mC pod5s/ > calls.bam
+```
+
+### Selecting Data
+
+To basecall all reads in a nested directory structure [recursively]({{find("basecall_overview")}}#data-ingest)
+use `-r / --recursive`:
+
+```dorado
+dorado basecaller hac data/ --recursive  > calls.bam
+```
+
+To basecall only a limited number reads use the `-n / --max-reads` argument:
+
+```dorado
+dorado basecaller hac data/ --max-reads 100  > calls.bam
+```
+
+!!! tip inline end
+
+    You can generate a list of read ids using the [`pod5 view` tool](https://pod5-file-format.readthedocs.io/en/latest/docs/tools.html#pod5-view).
+
+To basecall a specific selection of reads use the `-l / --read-ids` argument passing in a file path
+to a newline-delimited list of read ids. Only these read ids will be basecalled.
+
+```dorado
+dorado basecaller hac data/ --read-ids read_ids.txt > calls.bam
 ```
 
 ### Resume Basecalling
