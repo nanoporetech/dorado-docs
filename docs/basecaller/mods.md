@@ -14,7 +14,7 @@ the addition of a modified basecalling model as shown in the [usage guide](#usag
 The abbreviation "mods models" is often used when referring to modification
 basecalling models
 
-### Supported Modifications
+### Supported modifications
 
 The modifications listed here are **not** necessarily available for all model speeds, and / or versions.
 
@@ -38,7 +38,7 @@ Please check the **[Models List]({{find("list")}})** for which modifications are
 | **m6A** | N(6)-Methyladenosine | [CHEBI:21891](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:21891) |
 | **pseU** | Pseudouridine | [CHEBI:17802](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:17802) |
 
-### Modification Context
+### Modification context
 
 Modified bases are modifications to one of the canonical bases (ACGTU).
 For example, `6mA` is a modified base which was originally a "canonical" `A` base.
@@ -47,8 +47,7 @@ Mods models can be described as either being "all-context" or having some specif
 context known as a "motif".
 
 All-context mods models will predict the presence of one or more mods at all
-positions of its canonical base. Motif mods models (which are not all-context),
-will only call mods at the positions of their specific motif.
+positions of its canonical base. Motif mods models (which are not all-context) will only call mods at the positions of their specific motif.
 
 For example, given the two mods models `5mC` and `5mCG` which both predict
 the presence of `5-Methylcytosine` on canonical `C` bases, the first is an all-context
@@ -65,7 +64,7 @@ The SAM tags [specification](https://samtools.github.io/hts-specs/SAMtags.pdf) h
 section on "Base Modifications" which describes in detail how modifications are annotated in
 the SAM/BAM output from Dorado.
 
-### Post Processing
+### Post processing
 
 [Modkit](https://github.com/nanoporetech/modkit) is a tool for working with modified bases.
 Documentation for Modkit can be found [here](https://nanoporetech.github.io/modkit/).
@@ -74,10 +73,10 @@ Documentation for Modkit can be found [here](https://nanoporetech.github.io/modk
 
 ## Usage
 
-Both dorado `basecaller` (simplex) and `duplex` tools support modified base basecalling
+Both `dorado basecaller` (simplex) and `duplex` tools support modified basecalling
 and they share a common interface for selecting which modifications to call.
 
-The CLI arguments used to control which modbase models run are shown in the [simplex]({{find("simplex")}}#cli-reference)
+The CLI arguments used to control which modified base models run are shown in the [simplex]({{find("simplex")}}#cli-reference)
 and [duplex]({{find("duplex")}}#cli-reference) CLI references and the relevant *and shared* sections of which has been copied below:
 
 ```text
@@ -93,11 +92,11 @@ Modified model arguments:
 
 Please see the [models list]({{find("list")}}) for the complete set of canonical and modified basecalling models.
 
-### Selecting Modbase Models
+### Selecting modified base models
 
-There are 3 ways to select modbase models
+There are three ways to select modified base models:
 
-#### Via Model Complex
+#### Via model complex
 
 !!! tip inline end  "Recommended"
 
@@ -119,14 +118,14 @@ as there is no way to specify a version (unlike when using model complex).
 Examples:
 
 ```dorado
-dorado basecaller hac         reads/  --modified-bases 6mA       > calls.bam
+dorado basecaller hac         reads/  --modified-bases pseU      > calls.bam
 dorado basecaller hac         reads/  --modified-bases 6mA 5mC   > calls.bam
-dorado duplex /simplex/model/ reads/  --modified-bases pseU      > calls.bam
+dorado duplex /simplex/model/ reads/  --modified-bases 5mC       > calls.bam
 ```
 
 #### Via `--modified-bases-models` CLI argument
 
-!!! Example inline end "Comma Separated"
+!!! Example inline end "Comma separated"
 
     Multiple modbase model **paths** must be **comma separated**.
 
@@ -148,7 +147,7 @@ dorado basecaller rna004_130bps_hac@v5.0.0 reads/ \
     > calls.bam
 ```
 
-### Modified Bases Threshold
+### Modified bases threshold
 
 The `--modified-bases-threshold` argument takes a value (float) in the interval `[0, 1]`
 and controls how the `ML` and `MM` sam tags are written to the output.
@@ -166,7 +165,7 @@ Note that there are no skipped positions (non-zero values) in the `MM` tag.
 
 Setting `--modified-bases-threshold 0.45` would mean that the modbase probabilities below
 `0.45 * 256 := 115` (converting to int8) are omitted from the output resulting in the
-following sam tags:
+following SAM tags:
 
 ```text
 MM:Z:C+m?,2,1; ML:B:C,127,255

@@ -1,10 +1,10 @@
-# Getting Started
+# Getting started
 
 ## Installation
 
-### From The Web
+### From the web
 
-Dorado can be installed from pre-built binaries for multiple platforms using the following links {{ dorado.version }} :
+Dorado {{ dorado.version }} can be installed from pre-built binaries for multiple platforms using the following links:
 
 * [dorado-{{ dorado.version }}-linux-x64](https://cdn.oxfordnanoportal.com/software/analysis/dorado-{{ dorado.version }}-linux-x64.tar.gz)
 * [dorado-{{ dorado.version }}-linux-arm64](https://cdn.oxfordnanoportal.com/software/analysis/dorado-{{ dorado.version }}-linux-arm64.tar.gz)
@@ -13,7 +13,8 @@ Dorado can be installed from pre-built binaries for multiple platforms using the
 
 Once the relevant `.tar.gz` or `.zip` archive has been downloaded, extract the archive to your desired location.
 
-### From Command Line
+
+### From the command line
 
 === "Linux x86"
 
@@ -45,7 +46,7 @@ Once the relevant `.tar.gz` or `.zip` archive has been downloaded, extract the a
     dorado-{{ dorado.version }}-osx-arm64/bin/dorado --version
     ```
 
-### Supported Platforms
+### Supported platforms
 
 Dorado has been tested extensively and supported on the following systems:
 
@@ -58,7 +59,7 @@ Dorado has been tested extensively and supported on the following systems:
 |               | H100           | CUDA Driver ≥520 |
 | Apple         | Apple Silicon (M1/M2/M3) | |
 
-Linux or Windows systems not listed above but which have Nvidia GPUs with ≥8 GB VRAM and architecture
+Linux x86 or Windows systems not listed above but which have Nvidia GPUs with ≥8 GB VRAM and architecture
 from Pascal onwards (except P100/GP100) have not been widely tested but are expected to work.
 When basecalling with Apple devices, we recommend systems with ≥16 GB of unified memory.
 
@@ -66,25 +67,25 @@ If you encounter problems with running on your system, please [report an issue](
 
 ---
 
-## Dorado Command Line Interface (CLI) Basics
+## Dorado command line interface (CLI) basics
 
 Dorado is a command line tool and `dorado` is the name of the binary executable. If [installed]({{find("index")}}#installation) correctly
-dorado will be on your `PATH` or in installed into some known directory.
+`dorado` will be on your `PATH` or installed into a known directory.
 
-If dorado is installed into the `PATH` you should be able to view the top-level help as shown below.
+If `dorado` is installed into the `PATH` you should be able to view the top-level help as shown below.
 
 ```dorado
 dorado --help
 ```
 
-Alternatively, if dorado is in a known path or in the current working directory try:
+Alternatively, if `dorado` is in a known path or in the current working directory try:
 
 ```dorado
 ./dorado --help
 /path/to/dorado --help
 ```
 
-## Dorado Subcommands
+## Dorado subcommands
 
 Dorado has multiple subcommands which are used to launch specific tools such as the `basecaller`. To view all
 available subcommands inspect the top-level help:
@@ -109,7 +110,7 @@ Optional arguments:
 -vv                     prints verbose version information and exits
 ```
 
-To launch a dorado subcommand use the following structure:
+To launch a Dorado subcommand use the following structure:
 
 ```dorado
 dorado <subcommand> --help > calls.bam
@@ -121,17 +122,17 @@ For example, to launch the `basecaller` use:
 dorado basecaller --help
 ```
 
-## Redirecting Output
+## Redirecting output
 
 There are many resources (see [gnu.org](https://www.gnu.org/software/bash/manual/html_node/Redirections.html))
 which explain the details of output re-direction but below are some examples uses of re-direction
-in dorado.
+in Dorado.
 
-Some dorado subcommands write it's business logic output to `stdout` and other runtime information to `stderr`.
-Examples of business logic output may be basecalls in a `.bam` file generated during basecalling. To write
+Some Dorado subcommands write their business logic output to `stdout` and other runtime information to `stderr`.
+Examples of business logic output may be basecalls in a  BAM file generated during basecalling. To write
 these outputs to a file we must redirect the `stdout` output to a file.
 
-Below is an example of writing the `stdout` output from `dorado basecaller` (which by default is a `.bam` file)
+Below is an example of writing the `stdout` output from `dorado basecaller` (which by default is a BAM file)
 using the `>` redirection operator. The `stderr` (runtime information) will be written to the terminal as normal.
 
 ```dorado
@@ -140,7 +141,7 @@ dorado basecaller ... > calls.bam
 
 !!! tip inline end
 
-    To view the `my.log` info in real-time while it's being written by dorado try:
+    To view the `my.log` info in real-time while it is being written by Dorado try:
 
     ```bash
     tail -f dorado.log
@@ -152,15 +153,15 @@ To write the `stderr` runtime information to a log file use the `&>` `stderr` re
 dorado basecaller ... > calls.bam &> dorado.log
 ```
 
-Some dorado subcommands can be "chained" together where the output of one is the input to the other.
-For example, `dorado basecaller` can generate a `.bam` file which is an input to `dorado demux` which
-can split this `.bam` file into files by barcode. This can be done with the `|` pipe operator.
-
+Some Dorado subcommands can be "chained" together where the output of one is the input to the other.
+For example, `dorado basecaller` can generate a BAM file which is an input to `dorado demux` which
+can split this BAM file into files by barcode. This can be done with the `|` pipe operator.
+<!-- why do this? -->
 ```dorado
 dorado basecaller ... | dorado demux --output demuxed
 ```
 
-## Command Line Arguments
+## Command line arguments
 
 Dorado subcommands are controlled from the command line using arguments.
 The available arguments for a specific subcommand can be seen by using the
@@ -168,7 +169,7 @@ The available arguments for a specific subcommand can be seen by using the
 
 Arguments are either **positional** or **optional**.
 
-### Positional Arguments
+### Positional arguments
 
 Positional arguments are arguments which must be specified in a specific position relative to others.
 The order of positional arguments matters. The dorado subcommand is an example of a positional
@@ -189,16 +190,16 @@ Positional arguments:
 This information is stating that we must place the `model` and `data` arguments in that order as shown:
 
 ```dorado
-dorado basecaller sup reads/ > calls.bam
+dorado basecaller hac reads/ > calls.bam
 ```
 
-### Optional Arguments
+### Optional arguments
 
 !!! note inline end
 
-    Optional arguments may be **required** by the dorado subcommand.
+    Optional arguments may be **required** by the `dorado` subcommand.
 
-Optional arguments are arguments which **may or may not be required**, and may themselved require zero or more
+Optional arguments are arguments which **may or may not be required**, and may themselves require zero or more
 values as inputs. Optional arguments requiring no additional values are also know as
 "flags", "toggles" or "switches".
 
@@ -223,7 +224,7 @@ Optional arguments:
 Here is a complete command with both positional and optional arguments:
 
 ```dorado
-dorado basecaller sup reads/ --device cuda:0 --min-qscore 10 --reference reference.fasta --no-trim > calls.bam
+dorado basecaller hac reads/ --device cuda:0 --min-qscore 10 --reference reference.fasta --no-trim > calls.bam
 ```
 
 !!! warning
@@ -238,10 +239,10 @@ dorado basecaller sup reads/ --device cuda:0 --min-qscore 10 --reference referen
     ```
     ```dorado
     # Valid
-    dorado basecaller sup reads --modified-bases 5mC 6mA --device cuda:0
+    dorado basecaller hac reads --modified-bases 5mC 6mA --device cuda:0
     ```
 
-## Runtime Information and Verbose Output
+## Runtime information and verbose output
 
 Dorado and its subcommands will generate some runtime information (logging) which is
 written to `stderr`. All subcommands have the `-v / --verbose` argument which can be used to increase
@@ -259,20 +260,20 @@ message severity and the message.
 [2024-01-01 00:00:00.000] [error] <error message - there is significant issue>
 ```
 
-It's **not recommended** to set any additional level of logging output (e.g. `-v` or `-vv`) in normal use
+It is **not recommended** to set any additional level of logging output (e.g. `-v` or `-vv`) in normal use
 as it can affect performance. However, if you experience an issue please first include
 a single `-v` while attempting to investigate the issue as it might yield insightful
 information which may otherwise be hidden.
 
 If you create a ticket on our [GitHub issues]({{ github.issues }})
-page please add debugging output if possible.
+page, please add debugging output if possible.
 
-## Specifying Hardware Resources
+## Specifying hardware resources
 
-Many of dorado's subcommands may be able to make use of modern GPU (Graphical Processing Unit) hardware (e.g. NVidia CUDA GPUs). Dorado subcommands which support GPU acceleration will provide the `-x / --device` command line
+Many of Dorado's subcommands may be able to make use of modern GPU (Graphical Processing Unit) hardware (e.g. Nvidia CUDA GPUs). Dorado subcommands which support GPU acceleration will provide the `-x` / `--device` command line
 argument.
 
-The valid values for the `-x / --device` argument are `cpu`, `metal` and `cuda:*`.
+The valid values for the `-x` / `--device` argument are `cpu`, `metal` and `cuda:*`.
 
 The `*` in `cuda:*` can be used to select which specific CUDA devices are used.
 
@@ -282,7 +283,7 @@ Valid examples are:
 * `cuda:1,2,3` select the second, third, and fourth device.
 * `cuda:all` and `cuda:auto` select **all** devices
 
-The default chosen for `-x / --device` is reported in the `--help` for each command.
+The default chosen for `-x` / `--device` is reported in the `--help` for each command.
 
 === "Linux & Windows"
 

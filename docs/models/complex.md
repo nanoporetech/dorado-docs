@@ -5,13 +5,13 @@
 
     Consisting of many different and connected parts.
 
-The `model` argument in dorado tools can specify either a simplex model **path** or a model **_complex_**.
+The `model` argument in Dorado tools can specify either a simplex model **path** or a model **_complex_**.
 
-Using a model complex instructs dorado to automatically select all basecalling models based on
+Using a model complex instructs Dorado to automatically select all basecalling models based on
 the model complex given and the **data** to be basecalled. This includes the simplex models, modified bases
 models and stereo duplex models.
 
-## Model Complex Syntax
+## Model complex syntax
 
 A model complex must start with the **simplex model speed**, and follows this syntax:
 
@@ -56,7 +56,7 @@ Examples: `6mA`, `m6A`, `pseU`, `5mC@v2` and `5mCG_5hmCG@v1.0.0`.
 Automatically selected **modification** models will always match the base simplex model version
 and will be the latest compatible version unless a specific version is set by the user.
 
-!!! warning "Multiple Modification Models Must Use Different Canonical Bases"
+!!! warning "Multiple modification models must use different canonical bases"
 
     When selecting multiple modification models, only one modification per canonical base
     may be active at once.
@@ -69,7 +69,7 @@ and will be the latest compatible version unless a specific version is set by th
 
 See the [Model List](list.md) for a list of all available models.
 
-## Examples of Model Complexes
+## Examples of model complexes
 
 | Model Complex | Description |
 | :------------ | :---------- |

@@ -5,7 +5,7 @@ gives a coarse sequence-to-signal mapping.
 
 It can be added to SAM/BAM outputs by setting the `--emit-moves` flag.
 
-## Move Table Metadata Format
+## Move table metadata format
 
 The format of the move table metadata SAM/BAM tag is as follows:
 
@@ -31,9 +31,9 @@ Move Table : 0,0,1,0,1
 SAM Tag    : mv:B:c,5,0,0,1,0,1
 ```
 
-??? Info "Implementation Details"
+??? Info "Implementation details"
 
-    As the meta data is signed, each individual element supports values in the range -128 to 127.
+    As the metadata is signed, each individual element supports values in the range -128 to 127.
     In order to be able to store values outside this range, if a single element in the
     metadata has the value -128 or 127, then the next entry in the metadata should be
     added to the current one, in order to reconstruct the original value.

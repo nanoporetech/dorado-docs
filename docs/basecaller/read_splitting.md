@@ -2,11 +2,11 @@
 
 Dorado performs read splitting automatically.
 
-When a single input read contains multiple concatenated reads, dorado basecaller will split the
+When a single input read contains multiple concatenated reads, `dorado basecaller` will split the
 original input read into separate subreads. This operation is performed by default for both DNA
 and RNA.
 
-Each subread has a new read id that is assigned by dorado.
+Each subread has a new read id that is assigned by Dorado.
 
 The following tags can be used to associate a subread to its parent:
 

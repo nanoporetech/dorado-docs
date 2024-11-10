@@ -14,7 +14,7 @@ much information as possible and the Dorado team will aim to respond promptly.
 
 #### Which model should I use?
 
-Since Dorado 0.5.0 the [automatic model selection]({{find("complex")}})
+Since Dorado 0.5.0, the [automatic model selection]({{find("complex")}})
 algorithm should be able to select the appropriate model for the input data (POD5 only)
 given a model speed (e.g. `fast, hac, sup`). Dorado will automatically download missing models.
 
@@ -25,7 +25,7 @@ For more details see [Models Introduction]({{find("models")}}) and the [Models L
 
 ##### I have R10.4 data
 
-Dorado doesn't support basecalling models for the R10.4 condition. Please use the legacy Guppy basecaller.
+Dorado supports basecalling models for R10.4.1 and R9.4.1, but doesn't support basecalling models for the R10.4 condition. Please use the legacy Guppy basecaller, which is available from the Nanopore Community [Downloads page](https://community.nanoporetech.com/downloads).
 
 ---
 
@@ -34,7 +34,7 @@ Dorado doesn't support basecalling models for the R10.4 condition. Please use th
 New Dorado releases incrementally support new models which are generally not backwards compatible
 with previous versions.
 If you can see a model in the [Models List]({{find("list")}}) but you cannot download it
-please ensure you have the **latest release of dorado** which you can find instruction on
+please ensure you have the **latest release of Dorado** which you can find instruction on
 how to download and install it [here]({{find("index")}}#installation)
 
 ---
@@ -46,7 +46,7 @@ how to download and install it [here]({{find("index")}}#installation)
 Dorado reports the number of reads *basecalled* from your input data, but this number may differ
 from the number of records in your output because of read splitting. This can happen because a
 single read recorded to the POD5 file contains more than one molecule and this was not detected
-and split into separate records during sequencing by MinKnow.
+and split into separate records during sequencing by MinKNOW.
 
 Dorado annotates split reads by adding the `parent_read_id` which is stored in the bam `pi` tag.
 The `parent_read_id` is the read id of the original unsplit read. Only reads which are children of
