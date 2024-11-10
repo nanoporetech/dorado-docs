@@ -5,7 +5,7 @@ bgzip: https://www.htslib.org/doc/bgzip.html
 
 # Dorado Correct
 
-Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm.
+Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm in `dorado correct`.
 
 ## HERRO Algorithm
 
@@ -23,9 +23,9 @@ generating de novo assemblies of diploid organisms.
 The original paper containing implementation details
 can be downloaded from [bioRxiv](https://www.biorxiv.org/content/10.1101/2024.05.18.594796v1).
 
-## Quick Start
+## Quick start
 
-To run Dorado correct pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file.
+To run `dorado correct`, pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file.
 Dorado will perform read correction on this dataset after automatically downloading the
 required [HERRO]({{herro}}) model.
 
@@ -47,17 +47,17 @@ dorado correct reads.fastq --model-path herro-v1 > corrected_reads.fasta
 
 !!! IMPORTANT
 
-    Currently there is only one dorado correct model which is `herro-v1` which is for the `r10.4` run condition.
+    Currently there is only one `dorado correct` model which is `herro-v1` for the `r10.4` run condition.
 
 ## Usage
 
-Dorado correct supports FASTQ(.gz) as the input and generates a FASTA file as output.
+Dorado `correct` supports FASTQ(.gz) as the input and generates a FASTA file as output.
 A FASTQ file is either a FASTA or FASTQ file and either can be uncompressed
 or compressed with [bgzip]({{bgzip}}).
 
 An index file is generated for the input FASTQ file in the same folder unless
 one is already present. Please ensure that the folder with the input file is writeable
-by the dorado process and has sufficient disk space (no more than 10GB should be
+by the Dorado process and has sufficient disk space (no more than 10GB should be
 necessary for a whole genome dataset).
 
 To correct reads, run:
@@ -74,9 +74,9 @@ dorado download --model herro-v1
 dorado correct --model-path herro-v1 reads.fq.gz > corrected_reads.fasta
 ```
 
-### Split Mapping and Inference
+### Split mapping and inference
 
-`dorado correct` can run mapping (CPU-only stage) and inference (GPU-intensive stage) individually.
+Dorado `correct` can run mapping (CPU-only stage) and inference (GPU-intensive stage) individually.
 This enables separation of the CPU and GPU heavy stages into individual steps which can
 even be run on different nodes with appropriate compute characteristics. For example:
 
@@ -113,7 +113,7 @@ dorado correct reads.fastq --resume-from corrected_reads.res.fasta.fai > correct
 The input file format for the `--resume-from` feature can be any plain text file where
 the first whitespace-delimited column (or a full row) consists of sequence names to skip, one per row.
 
-## Specifying Resources
+## Specifying resources
 
 Dorado correct will automatically select all available compute resources to perform error correction.
 
@@ -164,7 +164,7 @@ please check the following:
 2. Input coverage is reasonable, preferably >=30x.
       * Check the average base qualities of the input dataset. Dorado Correct expects accurate inputs for both mapping and inference.
 
-## CLI Reference
+## CLI reference
 
 Here's a slightly re-formatted output from the `dorado correct` subcommand for reference.
 

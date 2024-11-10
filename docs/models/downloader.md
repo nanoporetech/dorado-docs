@@ -5,7 +5,7 @@ model_complex: "../models/complex.md"
 ---
 # Downloader
 
-Dorado can download [models]({{model_desc}}) from the Oxford Nanopore's Content Delivery Network (CDN) using the `dorado download`
+Dorado can download [models]({{model_desc}}) from the Oxford Nanopore Content Delivery Network (CDN) using the `dorado download`
 command.
 
 ```text hl_lines="1"
@@ -30,7 +30,7 @@ Optional arguments:
   -v, --verbose       [may be repeated]
 ```
 
-## Downloading Models
+## Downloading models
 
 ### Download all models
 
@@ -46,10 +46,10 @@ To download models for a specific sequencing condition and model speed, provide 
 [model complex]({{model_complex}}) to the `--model` argument
 and set the `--data` argument to path to your pod5 input data (.fast5 is not supported).
 
-Dorado will then download the simplex and modbase models matching the condition and model complex selection.
+Dorado will then download the simplex and modified base models matching the condition and model complex selection.
 
 ```dorado
-dorado download --model sup --data pod5s/
+dorado download --model hac --data pod5s/
 ```
 
 ### Download specific models
@@ -90,17 +90,17 @@ dorado download --model <model_name> --models-directory /path/to/models_director
 
 !!! tip
 
-    The `--models-directory` argument is available on many dorado commands (e.g. `dorado basecaller`)
+    The `--models-directory` argument is available on many Dorado commands (e.g. `dorado basecaller`)
     to specify a directory to search for existing models.
     This can be used to avoid repeatedly downloading models.
 
-## Model Search Directory and Temporary Downloads
+## Model search directory and temporary downloads
 
 Dorado tools can automatically download models when provided with a [model complex]({{model_complex}})
 and POD5 data.
 
 Once the automatic model selection process has found the appropriate model name matching the selection and data,
-dorado will search for existing models to avoid downloading models unnecessarily.
+Dorado will search for existing models to avoid downloading models unnecessarily.
 
 The behaviour of this search can be controlled as listed below and are in order of decreasing priority:
 
@@ -115,17 +115,17 @@ using the model.
 ### Examples
 
 The example below shows that without using `--models-directory` automatic model selection will download and
-clean up models on every use of dorado.
+clean up models on every use of Dorado.
 
 ```dorado
-# Model is downloaded into temporary directory and cleaned when dorado is finished
-dorado basecaller sup pod5s/ > calls.bam
+# Model is downloaded into temporary directory and cleaned when Dorado is finished
+dorado basecaller hac pod5s/ > calls.bam
 
-ls *sup*
+ls *hac*
 # No results
 
 # Model is re-downloaded and cleaned up again
-dorado basecaller sup pod5s/ > calls.bam
+dorado basecaller hac pod5s/ > calls.bam
 ```
 
 The example below shows that when using `--models-directory`, automatic model selection will
@@ -133,13 +133,13 @@ download models that are missing and reuse previously existing models.
 
 ```dorado
 # Model is downloaded into models/
-dorado basecaller sup pod5s/ --models-directory models/ > calls.bam
+dorado basecaller hac pod5s/ --models-directory models/ > calls.bam
 
 ls models/
-    dna_r10.4.1_e8.2_400bps_sup@v5.0.0
+    dna_r10.4.1_e8.2_400bps_hac@v5.0.0
 
 # Model is re-used
-dorado basecaller sup pod5s/ --models-directory models/ > calls.bam
+dorado basecaller hac pod5s/ --models-directory models/ > calls.bam
 ```
 
 Models can be re-used as shown above but by using the `DORADO_MODELS_DIRECTORY`
@@ -153,5 +153,5 @@ export DORADO_MODELS_DIRECTORY="/path/to/models/"
 The environment variable can also be set inline with dorado but this is just shown for completeness.
 
 ```dorado
-DORADO_MODELS_DIRECTORY=/path/to/models/ dorado basecaller sup pod5s/ > calls.bam
+DORADO_MODELS_DIRECTORY=/path/to/models/ dorado basecaller hac pod5s/ > calls.bam
 ```

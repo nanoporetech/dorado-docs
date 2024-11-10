@@ -3,7 +3,7 @@
 Dorado uses the [minimap2 aligner]({{mm2_docs}}) to align basecalled sequences to
 a reference and supports aligning existing basecalls or producing aligned output directly.
 
-## Aligning Existing Basecalls
+## Aligning existing basecalls
 
 To align existing basecalls, run:
 
@@ -23,7 +23,7 @@ to an output directory, which will preserve the file structure of the inputs:
 dorado aligner <index> <calls-dir> --output-dir <output-dir>
 ```
 
-### Alignment Summary
+### Alignment summary
 
 An alignment summary containing alignment statistics for each read can be generated
 with the `--emit-summary` argument.
@@ -34,7 +34,7 @@ with the `--emit-summary` argument.
 
     The alignment summary file will be written into `<output-dir>`.
 
-## Alignment During Basecalling
+## Alignment during basecalling
 
 Including alignment during basecalling should not have a significant impact on overall basecalling throughput.
 Although alignment is a CPU intensive operation, basecalling throughput is generally limited
@@ -49,7 +49,7 @@ dorado basecaller <model> <reads> --reference <index> > aligned.bam
 dorado duplex     <model> <reads> --reference <index> > aligned.bam
 ```
 
-## Minimap2 Options
+## Minimap2 options
 
 Alignment uses `minimap2` and by default uses the `lr:hq` preset.
 This can be overridden by passing a minimap option string, `--mm2-opts`,
@@ -85,7 +85,7 @@ Optional arguments:
 
     Not all arguments from `minimap2` are currently available and parameter names are not finalized and may change.
 
-## Counting Overlaps
+## Counting overlaps
 
 The `--bed-file <bed>` argument is available in the `dorado basecaller` and `dorado aligner`.
 This argument specifies a `.bed` filepath which is used to count the number of overlaps between

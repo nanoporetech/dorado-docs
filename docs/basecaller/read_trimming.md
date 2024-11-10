@@ -6,7 +6,7 @@ RNA reads during basecalling
 For DNA basecalls only, trimming can be done as a separate step after basecalling
 using the `dorado trim` subcommand.
 
-!!! info "RNA Trimming"
+!!! info "RNA trimming"
 
     RNA trimming is always done in-line with basecalling and cannot be done afterwards
     using `dorado trim`.
@@ -16,9 +16,9 @@ using the `dorado trim` subcommand.
     Trimming adapters and primers may result in parts of the barcode flanking
     regions being removed, which could [interfere with demultiplexing](#effect-on-demultiplexing).
 
-## Trimming While Basecalling
+## Trimming while basecalling
 
-`dorado basecaller` will attempt to detect any adapter or primer sequences at
+Dorado `basecaller` will attempt to detect any adapter or primer sequences at
 the beginning and end of reads, and remove them from the output sequence.
 
 This functionality can be controlled using either the `--trim` or `--no-trim` options
@@ -33,7 +33,7 @@ The `--trim` option takes as its argument one of the following values:
 | `adapters`| :material-content-cut: | | | Detected adapters will be being trimmed, but primers will **not** be trimmed.<br />If barcoding is enabled, detected barcodes will **not** be trimmed. |
 | `none`    | | | | Nothing will be trimmed. Equivalent to `--no-trim`     |
 
-## Trimming Existing Datasets
+## Trimming existing datasets
 
 The `dorado trim` subcommand can be used to trim adapters and/or primer sequences in
 existing basecalled datasets. To do this, run:
@@ -59,7 +59,7 @@ first may interfere with correct barcode classification.
 The output of `dorado trim` will always be unaligned records, regardless of whether the
 input is aligned/sorted or not.
 
-### Dorado Trim CLI Reference
+### CLI reference
 
 ```bash
 Positional arguments:
@@ -83,11 +83,11 @@ Main arguments:
 
 ```
 
-## Custom Primer Trimming
+## Custom primer trimming
 
 !!! note inline end
 
-    Using the `--primer-sequences` argument will remove the Oxford Nanopore kits from the
+    Using the `--primer-sequences` argument will remove the Oxford Nanopore primer sequences from the
     trimming search.
 
 Dorado searches for primer sequences used in Oxford Nanopore kits. However, you can specify
@@ -98,10 +98,10 @@ In both cases this is accomplished using the `--primer-sequences` argument, foll
 path to a `FASTA` file containing the primer sequences you want
 to search for. The record names of the sequences do not matter.
 
-## Effect on Demultiplexing
+## Effect on demultiplexing
 
 If adapter/primer trimming is done while basecalling in combination with demultiplexing,
-then dorado will ensure that the trimming of adapters and primers does
+then Dorado will ensure that the trimming of adapters and primers does
 not interfere with the demultiplexing process.
 
 For example, trimming will not effect demultiplexing on `kit-name` in the following command:

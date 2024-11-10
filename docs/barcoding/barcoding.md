@@ -112,7 +112,7 @@ arrangement file via the `--barcode-arrangement` argument (either to `dorado dem
 `dorado basecaller`). Custom barcode sequences can optionally be specified via the
 `--barcode-sequences` option. See [here]({{find("custom_barcode")}}) for more details.
 
-## CLI Reference
+## CLI reference
 
 Here's a slightly re-formatted output from the `dorado demux` subcommand for reference.
 

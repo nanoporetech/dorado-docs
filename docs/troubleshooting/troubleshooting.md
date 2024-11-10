@@ -1,4 +1,4 @@
-# Troubleshoting
+# Troubleshooting
 
 This page contains Dorado troubleshooting advice to help users resolve issues which are known
 to appear from time to time.
@@ -7,9 +7,9 @@ If you have an issue that cannot be resolved following the advice below please r
 [Dorado GitHub issues](https://github.com/nanoporetech/dorado/issues) page providing as
 much information as possible and the Dorado team will aim to respond promptly.
 
-You can also seek advice from the [Nanopore Commuinity](https://community.nanoporetech.com/docs?from=support).
+You can also seek advice from the [Nanopore Community](https://community.nanoporetech.com/docs?from=support).
 
-## Errors and Warnings
+## Errors and warnings
 
 Dorado will issue warnings and errors to `stderr` during runtime and may terminate if an
 unrecoverable error occurs. Many errors stem from incorrect configuration of the
@@ -26,7 +26,7 @@ command line and the following are examples of common
 When using automatic [model selection complex]({{find("complex")}}) dorado must be able to
 determine which model to use by inspecting the input data which must be in the `.pod5` format.
 
-If your data doesn't contain a recognised flowcell (e.g. `__UNKNOWN_FLOWCELL__`) or
+If your data doesn't contain a recognised flow cell (e.g. `__UNKNOWN_FLOWCELL__`) or
 sequencing_kit (e.g. `__UNKNOWN_KIT__`) dorado cannot find a suitable model for your data.
 
 To basecall your data you need to first [download]({{find("downloader")}}) a basecalling model
@@ -41,14 +41,14 @@ dorado basecaller dna_r9.4.1_e8_hac@v3.3 reads/ > calls.bam
 For details please check out the [models introduction]({{find("models")}}) and
 the [models list]({{find("list")}}).
 
-## Runtime Issues
+## Runtime issues
 
 ### CUDA Out Of Memory
 
 Dorado supports multiple model architectures which can vary significantly in size (`fast, hac, sup`).
 Multiple models are also used together when using features such as modification basecalling,
 stero duplex basecalling and hemi-methylation duplex basecalling. As such there are
-cases where excessive GPU memory conumption can unexpectedly terminate Dorado.
+cases where excessive GPU memory consumption can unexpectedly terminate Dorado.
 
 Unless specified otherwise by the user Dorado will attempt to calculate the optimal
 batch size using the auto batch size protocol.
@@ -83,7 +83,7 @@ dorado basecaller <model> <reads> --batchsize 432 ... > calls.bam
 
 Repeat the above until Dorado completes successfully without running out of GPU memory.
 
-### Low GPU Utilization
+### Low GPU utilization
 
 Low GPU utilization can lead to reduced basecalling speed. This problem can be identified using
 tools such as `nvidia-smi` and `nvtop`. Low GPU utilization often stems from I/O bottlenecks
@@ -91,7 +91,7 @@ in basecalling.
 
 Here are a few steps you can take to improve the situation:
 
-1. Use for POD5 instead of .fast5:
+1. Use POD5 instead of .fast5:
     - POD5 has superior I/O performance and will enhance the basecall speed in I/O constrained environments.
 2. Transfer data to the local disk before basecalling:
     - Frequently network disks cannot supply Dorado with adequate I/O speeds.
@@ -100,14 +100,14 @@ Here are a few steps you can take to improve the situation:
     - Particularly for duplex basecalling, using a local SSD can offer significant speed advantages.
         This is due to the duplex basecalling algorithm's reliance on heavy random access of data.
 
-### Library Path Errors
+### Library path errors
 
 Dorado comes equipped with the necessary libraries (such as CUDA) for its execution.
 However, on some operating systems, the system libraries might be chosen over Dorado's.
 This discrepancy can result in various errors, for instance, `CuBLAS error 8`.
 
 To resolve this issue, you need to set the `LD_LIBRARY_PATH` to point to Dorado's libraries.
-Use a command like the following on remembering to change path as appropriate:
+Use a command like the following to change path as appropriate:
 
 === "Linux"
 
@@ -121,7 +121,7 @@ Use a command like the following on remembering to change path as appropriate:
     $ export DYLD_LIBRARY_PATH=<PATH_TO_DORADO>/dorado-{{dorado.version}}-osx-arm64/lib:$DYLD_LIBRARY_PATH
     ```
 
-### Windows PowerShell Encoding
+### Windows PowerShell encoding
 
 When running in PowerShell on Windows, care must be taken, as the default encoding for application
 output is typically `UTF-16LE`.  This will cause file corruption if standard output is redirected to a file.
@@ -153,4 +153,4 @@ This command will produce a well formed ascii **SAM** file:
 PS > dorado basecaller <args> --emit-sam | out-file -encoding Ascii out.sam
 ```
 
-Read more about Powershell output encoding [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.4).
+Read more about PowerShell output encoding [here](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_character_encoding?view=powershell-7.4).

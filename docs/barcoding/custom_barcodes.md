@@ -10,7 +10,7 @@ in Guppy, with some adjustments to account for the algorithmic changes in Dorado
 Custom [barcode arrangements](#arrangement-file) are defined using a `toml` file,
 and custom [barcode sequences](#sequences-file) are defined in a `FASTQ` file.
 
-## Barcode Reference Diagram
+## Barcode reference diagram
 
 A double-ended barcode with different flanks and barcode sequences for front and rear
 barcodes is described here.
@@ -36,7 +36,7 @@ the sequence description would look like this:
 ... ---ADAPTER/PRIMER --- 3'
 ```
 
-## Arrangement File
+## Arrangement file
 
 The following are all the options that can be defined in the arrangement file.
 
@@ -70,7 +70,7 @@ rear_barcode_window = 175
 midstrand_flank_score = 0.95
 ```
 
-### Arrangement Options
+### Arrangement options
 
 The table below describes the arrangement options in more detail.
 
@@ -96,7 +96,7 @@ The table below describes the arrangement options in more detail.
 The pre-built barcode sequences in Dorado can be found in the [barcode_kits.cpp file]({{dorado.code}}/dorado/utils/barcode_kits.cpp)
 under the `barcodes` map.
 
-### Scoring Options
+### Scoring options
 
 Dorado maintains a default set of parameters for scoring each barcode to determine the best
 classification. These parameters have been tuned based on barcoding kits from Oxford Nanopore.
@@ -146,7 +146,7 @@ For `flank_left_pad` and `flank_right_pad`, something in the range of 5-10 bases
 Note that errors from this padding region are also part of the barcode alignment penalty.
 Therefore a bigger padding region may require a higher `max_barcode_penalty` for classification.
 
-## Sequences File
+## Sequences file
 
 In addition to specifying a custom barcode arrangement, new barcode sequences can also be specified
 in a FASTQ format.

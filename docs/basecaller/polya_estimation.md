@@ -1,6 +1,6 @@
-# PolyA Estimation
+# Poly(A) Estimation
 
-Dorado has initial support for estimating poly(A) tail lengths for cDNA (PCS and PCB kits) and RNA.
+Dorado has initial support for estimating poly(A) tail lengths for cDNA (PCS and PCB kits) and RNA, and can be configured for use with custom primer sequences, interrupted tails, and plasmids.
 
 !!! info "Poly(A) and Poly(T)"
 
@@ -12,19 +12,19 @@ This feature can be enabled by setting `--estimate-poly-a` argument which is dis
 The estimated tail length is stored in the `pt:i` tag of the output record.
 Reads for which the tail length could not be estimated will not have the `pt:i` tag.
 
-## Custom Poly Tail Configuration
+## Custom Poly(A) Tail Configuration
 
-The default settings for this feature are optimized for non-interrupted Poly(A/T)
+The default settings for this feature are optimized for non-interrupted poly(A/T)
 sequences that occur at read ends but these setting can be configured using a configuration file
-which is passed into dorado using the `--poly-a-config` argument.
+which is passed into Dorado using the `--poly-a-config` argument.
 
 This configuration file can configure parameters for:
 
 * Custom primer sequence for cDNA tail estimation
-* Clustering of interrupted Poly(A/T) tails
-* Estimation of Poly(A/T) length in plasmids
+* Clustering of interrupted poly(A/T) tails
+* Estimation of poly(A/T) length in plasmids
 
-## Poly(A/T) Reference Diagram
+## Poly(A/T) reference diagram
 
 ```text title="cDNA"
  5' --- ADAPTER --- FRONT_PRIMER
@@ -56,11 +56,11 @@ OR
 ... --- RC(DNA) --- 3'
 ```
 
-## Configuration Format
+## Configuration format
 
-The poly-a configuration file uses the `toml` format.
+The poly(A) configuration file uses the `toml` format.
 
-The content of the file depends on the application i.e. cDNA or Plasmids.
+The content of the file depends on the application i.e. cDNA or plasmids.
 
 === "cDNA"
 
@@ -127,7 +127,7 @@ This creates three configurations:
 * a configuration to use for `barcode01` from kit `Custom-Kit` almost identical to the main custom settings (i.e. with the custom front and rear primers and the interrupt length), with an additional change to the `flank_threshold`.
 * a configuration to use for `barcode02` from kit `Custom-Kit` with different primers and an interrupt length of 10, but with no change to the flank threshold.
 
-### Configuration Options
+### Configuration options
 
 | Config Group | Option | Description |
 | -------: | -- | -- |

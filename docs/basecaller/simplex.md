@@ -1,6 +1,6 @@
 # Simplex Basecalling
 
-## Quick Start
+## Quick start
 
 To run Dorado basecalling, using the [automatically downloaded]({{find("complex")}}) `hac` model
 on a directory of POD5 files or a single POD5 file use:
@@ -30,7 +30,7 @@ can be re-used please see the [downloader documentation]({{find("downloader")}}#
 dorado basecaller /path/to/simplex_model/ pod5s/ > calls.bam
 ```
 
-### Adding Modified Bases
+### Adding modified bases
 
 To add modified base basecalling extend the [model complex]({{find("complex")}}) or refer to
 modified basecalling [usage guide]({{find("mods")}}#usage) for more details on the other options available.
@@ -40,7 +40,7 @@ dorado basecaller hac,5mC     pod5s/ > calls.bam
 dorado basecaller sup,6mA,5mC pod5s/ > calls.bam
 ```
 
-### Selecting Data
+### Selecting data
 
 To basecall all reads in a nested directory structure [recursively]({{find("basecall_overview")}}#data-ingest)
 use `-r / --recursive`:
@@ -66,7 +66,7 @@ to a newline-delimited list of read ids. Only these read ids will be basecalled.
 dorado basecaller hac data/ --read-ids read_ids.txt > calls.bam
 ```
 
-### Resume Basecalling
+### Resume basecalling
 
 If basecalling is interrupted, it is possible to resume basecalling from a BAM file.
 To do so, use the `--resume-from` flag to specify the path to the incomplete BAM file.
@@ -86,19 +86,19 @@ dorado basecaller hac pod5s/ --resume-from incomplete.bam > calls.bam
     dorado basecaller hac pod5/ --resume-from resume.bam > resume.bam
     ```
 
-## Read Trimming
+## Read trimming
 
 See [read trimming]({{find("read_trimming")}}).
 
 ---
 
-## CLI Reference
+## CLI reference
 
 Here's a slightly re-formatted output from the `dorado basecaller` subcommand for reference.
 
 !!! info
 
-    Please check the `--help` output of your own installation of dorado as this page may be outdated
+    Please check the `--help` output of your own installation of Dorado as this page may be outdated
     and argument defaults have been omitted as they are platform specific.
 
 ```text hl_lines="1"

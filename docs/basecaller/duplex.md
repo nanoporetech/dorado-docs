@@ -1,16 +1,15 @@
 # Duplex Basecalling
 
-Duplex basecalling is an extension to the simplex basecalling process where dorado continues by
+Duplex basecalling is an extension to the simplex basecalling process where Dorado continues by
 pairing template and complement strands, combines all the information for both strands
-including the basecalls, qscores and, signal and passes this through a stereo duplex
-model. The stereo duplex model considers this combined information to improve the basecalling accuracy
-significantly.
+including the basecalls, Q-scores and, signal and passes this through a stereo duplex
+model. The stereo duplex model considers this combined information to improve the basecalling accuracy.
 
-Please watch this video on [YouTube](https://www.youtube.com/embed/8DVMG7FEBys?si=XUHn3DwZCKOPI1k8) for a introduction to Duplex basecalling.
+Please watch this video on [YouTube](https://www.youtube.com/embed/8DVMG7FEBys?si=XUHn3DwZCKOPI1k8) for an introduction to Duplex basecalling.
 
-## Quick Start
+## Quick start
 
-To run Dorado duplex basecalling, using the automatically [downloaded]({{find("downloader")}})
+To run Dorado duplex basecalling, using an automatically [downloaded]({{find("downloader")}})
 `hac` model on a directory of POD5 files or a single POD5 file
 (.fast5 files are supported, but will not be as performant).
 
@@ -57,14 +56,14 @@ The `dx` tag can be used to distinguish between simplex and duplex reads as foll
 | `dx`  | Read Description |
 | ----- | ----------- |
 | `1`   | A duplex read.|
-| `0`   | A simplex read which have no duplex offspring. |
+| `0`   | A simplex read which has no duplex offspring. |
 | `-1`  | A simplex read which has duplex offspring. |
 
 Dorado will report the duplex rate as the number of nucleotides in the duplex basecalls
 multiplied by two and divided by the total number of nucleotides in the simplex basecalls.
 This value is a close approximation for the proportion of nucleotides which participated in a duplex basecall.
 
-## Hemi-Methylation Duplex Basecalling
+## Hemi-methylation duplex basecalling
 
 Duplex basecalling can be performed with modified base detection, producing hemi-methylation calls for duplex reads.
 
@@ -76,7 +75,7 @@ More information on how hemi-methylation calls are represented can be found the
 SAM [specification](https://samtools.github.io/hts-specs/SAMtags.pdf) and
 Modkit [documentation](https://nanoporetech.github.io/modkit/intro_pileup_hemi.html).
 
-## Duplex Basecalling Performance
+## Duplex basecalling performance
 
 Duplex basecalling is an IO-intensive process and can perform poorly if using networked storage or HDD.
 This can generally be improved by splitting up POD5 files appropriately.
@@ -110,9 +109,9 @@ pod5 subset /path/to/your/dataset/ --summary summary.tsv --columns channel --out
 ```
 
 The command above will create the output directory `split_by_channel` and write into it
-one pod5 file per unique channel. Duplex basecalling these split reads should now be much faster.
+one POD5 file per unique channel. Duplex basecalling these split reads should now be much faster.
 
-### Distributed Duplex Basecalling
+### Distributed duplex basecalling
 
 If running duplex basecalling in a distributed fashion (e.g. on a SLURM or Kubernetes cluster)
 it is important to split POD5 files as described above.
@@ -127,7 +126,7 @@ Once the split is performed one can execute multiple jobs against smaller subset
 This will generate multiple BAMs which can be merged. This approach also offers some resilience
 as if any job fails it can be restarted without having to re-run basecalling against the entire dataset.
 
-## CLI Reference
+## CLI reference
 
 Here's a slightly re-formatted output from the `dorado duplex` subcommand for reference.
 

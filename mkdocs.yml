@@ -7,11 +7,6 @@ repo_name: Dorado
 
 nav:
   - index.md
-  - Models:
-      - Introduction: models/models.md
-      - Selection Complex: models/complex.md
-      - Downloading Models: models/downloader.md
-      - Models List: models/list.md
   - Basecaller:
       - Introduction: basecaller/basecall_overview.md
       - Simplex: basecaller/simplex.md
@@ -23,12 +18,17 @@ nav:
           - Sample Sheet: barcoding/sample_sheet.md
       - Alignment: basecaller/alignment.md
       - Read Trimming: basecaller/read_trimming.md
-      - PolyA Estimation: basecaller/polya_estimation.md
+      - Poly(A) Estimation: basecaller/polya_estimation.md
       - Details:
           - Read Splitting: basecaller/read_splitting.md
           - Moves Table: basecaller/move_table.md
           - QScore: basecaller/qscore.md
           - SAM Specification: basecaller/sam_spec.md
+  - Models:
+      - Introduction: models/models.md
+      - Selection Complex: models/complex.md
+      - Downloading Models: models/downloader.md
+      - Models List: models/list.md
   - Help:
       - Troubleshooting: troubleshooting/troubleshooting.md
       - FAQ: troubleshooting/faq.md

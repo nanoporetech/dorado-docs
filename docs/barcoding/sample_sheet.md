@@ -1,6 +1,6 @@
 # Sample Sheet
 
-`dorado` can make use of a MinKNOW-compatible sample sheet containing data used to
+Dorado can make use of a MinKNOW-compatible sample sheet containing data used to
 identify a particular classification of read.
 
 To apply a sample sheet, provide the path to the appropriate CSV file using the `--sample-sheet` argument:
@@ -21,7 +21,7 @@ dorado demux calls.bam \
     --sample-sheet <path_to_sample_sheet_csv>
 ```
 
-`dorado` currently uses the sample sheet only for barcode filtering and aliasing,
+Dorado currently uses the sample sheet only for barcode filtering and aliasing,
 so a `--kit-name` argument is **required**.
 
 In the case of `demux`, the sample sheet must contain a 1-to-1 mapping of `barcode` identifiers
@@ -29,7 +29,7 @@ to `flow_cell_id`/`position_id` - i.e. all entries in the `barcode` column must 
 
 ## Specification
 
-### Sample Sheet Column headers
+### Sample sheet column headers
 
 A sample sheet may only contain the column names below:
 
@@ -58,7 +58,7 @@ For a full description of the format of the sample sheet, see
 
 !!! note
 
-    `dorado` does not currently support dual barcodes.
+    Dorado does not currently support dual barcodes.
 
 ## Barcode aliasing
 
