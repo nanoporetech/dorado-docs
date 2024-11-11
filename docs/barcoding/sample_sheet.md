@@ -76,5 +76,5 @@ This will be reflected in the read group ID `@RG ID` in the file header, and in 
 
 ## Barcode filtering
 
-If a sample sheet is present and barcoding is requested, `dorado` will only attempt to
+If a sample sheet is present and barcoding is requested, Dorado will only attempt to
 find matches to the barcode identifiers listed in the `barcode` column (if present).

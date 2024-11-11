@@ -50,7 +50,7 @@ Any specific position in the DNA which is in a duplex read is also seen in two s
 (the template and complement). So, each DNA position which is duplex sequenced will be covered
 by a minimum of three separate readings in the output.
 
-Dorado records the this information in the `dx` BAM tag on all reads basecalled using `dorado duplex`.
+Dorado records the this information in the `dx` BAM tag on all reads basecalled using Dorado `duplex`.
 The `dx` tag can be used to distinguish between simplex and duplex reads as follows:
 
 | `dx`  | Read Description |
@@ -128,7 +128,7 @@ as if any job fails it can be restarted without having to re-run basecalling aga
 
 ## CLI reference
 
-Here's a slightly re-formatted output from the `dorado duplex` subcommand for reference.
+Here's a slightly re-formatted output from the Dorado `duplex` subcommand for reference.
 
 !!! info
 
@@ -140,7 +140,7 @@ Here's a slightly re-formatted output from the `dorado duplex` subcommand for re
 
 Positional arguments:
   model                       Model selection {fast,hac,sup}@v{version} for automatic model selection
-                                including modbases, or path to existing model directory.
+                                including modified bases, or path to existing model directory.
   reads                       Reads in POD5 format or BAM/SAM format for basespace.
 
 Optional arguments:

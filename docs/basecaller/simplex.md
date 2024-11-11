@@ -32,7 +32,7 @@ dorado basecaller /path/to/simplex_model/ pod5s/ > calls.bam
 
 ### Adding modified bases
 
-To add modified base basecalling extend the [model complex]({{find("complex")}}) or refer to
+To add modified basecalling extend the [model complex]({{find("complex")}}) or refer to
 modified basecalling [usage guide]({{find("mods")}}#usage) for more details on the other options available.
 
 ```dorado
@@ -79,7 +79,7 @@ dorado basecaller hac pod5s/ --resume-from incomplete.bam > calls.bam
     Do not reuse the filenames for `--resume-from` and the new output.
 
     If they are the same then the interrupted file will be **deleted** when
-    `dorado` is launched and the previous work will be lost.
+    Dorado is launched and the previous work will be lost.
 
     ```dorado
     # WARNING: This will overwrite the existing `resume.bam` file before it is used.
@@ -94,7 +94,7 @@ See [read trimming]({{find("read_trimming")}}).
 
 ## CLI reference
 
-Here's a slightly re-formatted output from the `dorado basecaller` subcommand for reference.
+Here's a slightly re-formatted output from the Dorado `basecaller` subcommand for reference.
 
 !!! info
 
@@ -106,7 +106,7 @@ Here's a slightly re-formatted output from the `dorado basecaller` subcommand fo
 
 Positional arguments:
   model                       Model selection {fast,hac,sup}@v{version} for automatic model selection
-                                including modbases, or path to existing model directory.
+                                including modified bases, or path to existing model directory.
   data                        The data directory or file (POD5/FAST5 format).
 
 Optional arguments:
@@ -173,10 +173,10 @@ Trimming arguments:
                                 The 'none' choice is equivalent to using --no-trim.
                                 Note that this only applies to DNA. RNA adapters are always trimmed.
 
-Poly-a arguments:
-  --estimate-poly-a           Estimate poly-A/T tail lengths (beta feature).
+Poly(A) arguments:
+  --estimate-poly-a           Estimate poly(A/T) tail lengths (beta feature).
                                 Primarily meant for cDNA and dRNA use cases.
-  --poly-a-config             Configuration file for PolyA estimation to change default behaviours
+  --poly-a-config             Configuration file for poly(A) estimation to change default behaviours
 
 Advanced arguments:
   -b, --batchsize             The number of chunks in a batch. If 0 an optimal batchsize will be selected.

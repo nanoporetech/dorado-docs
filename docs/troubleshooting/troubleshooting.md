@@ -24,7 +24,7 @@ command line and the following are examples of common
 ```
 
 When using automatic [model selection complex]({{find("complex")}}) dorado must be able to
-determine which model to use by inspecting the input data which must be in the `.pod5` format.
+determine which model to use by inspecting the input data which must be in POD5 format.
 
 If your data doesn't contain a recognised flow cell (e.g. `__UNKNOWN_FLOWCELL__`) or
 sequencing_kit (e.g. `__UNKNOWN_KIT__`) dorado cannot find a suitable model for your data.

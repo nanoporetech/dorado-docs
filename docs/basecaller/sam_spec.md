@@ -25,7 +25,7 @@
 |  Tag   | Description                                                |
 | ------:| -----------------------------------------------------------|
 | `RG:Z:`  | `<runid>_<basecalling_model>_<barcode_arrangement>`        |
-| `qs:f:`  | mean basecall qscore                                       |
+| `qs:f:`  | mean basecall q-score                                       |
 | `ts:i:`  | the number of samples trimmed from the start of the signal |
 | `ns:i:`  | the basecalled sequence corresponds to the interval `signal[ts : ns]` <br /> the move table maps to the same interval. <br /> note that `ns` reflects trimming (if any) from the rear <br /> of the signal. |
 | `mx:i:`  | read mux                                                   |
