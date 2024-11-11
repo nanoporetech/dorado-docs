@@ -5,7 +5,7 @@ bgzip: https://www.htslib.org/doc/bgzip.html
 
 # Dorado Correct
 
-Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm in `dorado correct`.
+Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm in Dorado `correct`.
 
 ## HERRO Algorithm
 
@@ -25,7 +25,7 @@ can be downloaded from [bioRxiv](https://www.biorxiv.org/content/10.1101/2024.05
 
 ## Quick start
 
-To run `dorado correct`, pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file.
+To run Dorado `correct`, pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file.
 Dorado will perform read correction on this dataset after automatically downloading the
 required [HERRO]({{herro}}) model.
 
@@ -47,7 +47,7 @@ dorado correct reads.fastq --model-path herro-v1 > corrected_reads.fasta
 
 !!! IMPORTANT
 
-    Currently there is only one `dorado correct` model which is `herro-v1` for the `r10.4` run condition.
+    Currently there is only one Dorado `correct` model which is `herro-v1` for the `r10.4` run condition.
 
 ## Usage
 
@@ -89,14 +89,14 @@ Gzipped PAF is currently not supported for the `--from-paf` option.
 
 ### Resume
 
-If a run was stopped or has failed, `dorado correct` provides functionality to resume from where the previous
+If a run was stopped or has failed, Dorado `correct` provides functionality to resume from where the previous
 run stopped.
 
 The `--resume-from` argument takes a list of previously corrected reads provided via
 a `.fai` index from the outputs of the previous run. The reads that have been previously
 processed are then skipped when resuming.
 
-To generate the `.fai` file from a previous output from `dorado correct` use:
+To generate the `.fai` file from a previous output from Dorado `correct` use:
 
 ```bash
 # corrected_reads.fasta is the output from the previously interrupted run.
@@ -104,7 +104,7 @@ mv corrected_reads.fasta corrected_reads.res.fasta
 samtools faidx corrected_reads.res.fasta
 ```
 
-And to continue `dorado correct` using `--resume-from` use:
+And to continue Dorado `correct` using `--resume-from` use:
 
 ```dorado
 dorado correct reads.fastq --resume-from corrected_reads.res.fasta.fai > corrected_reads.fasta
@@ -166,7 +166,7 @@ please check the following:
 
 ## CLI reference
 
-Here's a slightly re-formatted output from the `dorado correct` subcommand for reference.
+Here's a slightly re-formatted output from the Dorado `correct` subcommand for reference.
 
 !!! Info
 

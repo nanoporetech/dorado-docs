@@ -20,11 +20,11 @@ To disable this barcode [trimming]({{find("read_trimming")}}), add the `--no-tri
 
 The default heuristic for double-ended barcodes is to look for them on **either** end of the read.
 This results in a higher classification rate but can also result in a higher false positive count.
-To address this, `dorado basecaller` also provides a `--barcode-both-ends` option to force
+To address this, Dorado `basecaller` also provides a `--barcode-both-ends` option to force
 double-ended barcodes to be detected on both ends before classification.
 This will reduce false positives dramatically, but also lower overall classification rates.
 
-The output from `dorado basecaller` can be demultiplexed into per-barcode BAMs using `dorado demux`.
+The output from Dorado `basecaller` can be demultiplexed into per-barcode BAMs using Dorado `demux`.
 
 ```dorado
 dorado demux --output-dir <output-dir> --no-classify <input-bam>
@@ -40,7 +40,7 @@ samtools split -u <output-dir>/unclassified.bam -f "<output-dir>/<prefix>_%!.bam
 ```
 
 However, `samtools split` uses the full `RG` string as the filename suffix, which can result in very long
-file names. We recommend using `dorado demux` to split barcoded BAMs.
+file names. We recommend using Dorado `demux` to split barcoded BAMs.
 
 ## Classifying existing datasets
 
@@ -52,7 +52,7 @@ dorado demux --kit-name <kit-name> --output-dir <output-dir-for-demuxed-bams> <r
 ```
 
 `<reads>` can either be a folder or a single file in an HTS format (e.g. FASTQ, BAM, etc.) or a
- stream of an HTS format (e.g. the output of `dorado basecaller`).
+ stream of an HTS format (e.g. the output of Dorado `basecaller`).
 
 ```dorado
 dorado basecaller <model> <reads> ... | dorado demux --kit-name <kit-name> --output-dir <output-dir> ...
@@ -81,7 +81,7 @@ unclassified.bam
 ```
 
 A summary file listing each read and its classified barcode can be generated with the
-`--emit-summary` option in `dorado demux`. The file will be saved in the `--output-dir` folder.
+`--emit-summary` option in Dorado `demux`. The file will be saved in the `--output-dir` folder.
 
 ## Demultiplexing mapped reads
 
@@ -90,7 +90,7 @@ To do this, you must use the `--no-trim` option. Trimming the barcodes will inva
 information that may be contained in the input files, and therefore the application will exclude
 any mapping information if `--no-trim` is not specified.
 
-It is also possible to get `dorado demux` to sort and index any output bam files that contain
+It is also possible to get Dorado `demux` to sort and index any output bam files that contain
 mapped reads. To enable this, use the `--sort-bam` option. If you use this option then you must
 also use the `--no-trim` option, as trimming will prevent any mapping information from being
 included in the output files. Index files (.bai extension) will only be created for BAM files
@@ -108,13 +108,13 @@ the path to a sample sheet to the `--sample-sheet` argument when using the `base
 
 In addition to supporting the standard barcode kits from Oxford Nanopore, Dorado also supports
 specifying custom barcode kit arrangements and sequences. This is done by passing a barcode
-arrangement file via the `--barcode-arrangement` argument (either to `dorado demux` or
-`dorado basecaller`). Custom barcode sequences can optionally be specified via the
+arrangement file via the `--barcode-arrangement` argument (either to Dorado `demux` or
+Dorado `basecaller`). Custom barcode sequences can optionally be specified via the
 `--barcode-sequences` option. See [here]({{find("custom_barcode")}}) for more details.
 
 ## CLI reference
 
-Here's a slightly re-formatted output from the `dorado demux` subcommand for reference.
+Here's a slightly re-formatted output from the Dorado `demux` subcommand for reference.
 
 !!! info
 

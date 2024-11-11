@@ -5,8 +5,8 @@ model_complex: "../models/complex.md"
 ---
 # Downloader
 
-Dorado can download [models]({{model_desc}}) from the Oxford Nanopore Content Delivery Network (CDN) using the `dorado download`
-command.
+Dorado can download [models]({{model_desc}}) from the Oxford Nanopore Content Delivery Network (CDN)
+using the Dorado `download` command.
 
 ```text hl_lines="1"
 ❯ dorado download --help
@@ -81,7 +81,7 @@ dorado download --model <model_name>
 
 ### Download models into a specific directory
 
-By default `dorado download` will download models into the current working directory.
+By default Dorado `download` will download models into the current working directory.
 Use the `--models-directory` argument to specify a directory to save downloaded models into.
 
 ```dorado
@@ -90,7 +90,7 @@ dorado download --model <model_name> --models-directory /path/to/models_director
 
 !!! tip
 
-    The `--models-directory` argument is available on many Dorado commands (e.g. `dorado basecaller`)
+    The `--models-directory` argument is available on many Dorado commands (e.g. `basecaller`)
     to specify a directory to search for existing models.
     This can be used to avoid repeatedly downloading models.
 

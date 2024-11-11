@@ -16,7 +16,7 @@ folder or file in any HTS format.
 
 ### Writing to an output directory
 
-When reading from an input folder, `dorado aligner` also supports writing aligned files
+When reading from an input folder, Dorado `aligner` also supports writing aligned files
 to an output directory, which will preserve the file structure of the inputs:
 
 ```dorado
@@ -42,7 +42,7 @@ by the GPU while the CPU is under-utilised. Dorado can make efficient use of bot
 GPU for basecalling and the otherwise under-utilised CPU for alignment, performing both
 concurrently.
 
-To basecall with alignment with `dorado basecaller` or `dorado duplex`, add the `--reference` argument:
+To basecall with alignment with Dorado `basecaller` or Dorado `duplex`, add the `--reference` argument:
 
 ```dorado
 dorado basecaller <model> <reads> --reference <index> > aligned.bam
@@ -87,7 +87,7 @@ Optional arguments:
 
 ## Counting overlaps
 
-The `--bed-file <bed>` argument is available in the `dorado basecaller` and `dorado aligner`.
+The `--bed-file <bed>` argument is available in the Dorado `basecaller` and Dorado `aligner`.
 This argument specifies a `.bed` filepath which is used to count the number of overlaps between
 the bed file regions and the alignments generated.
 

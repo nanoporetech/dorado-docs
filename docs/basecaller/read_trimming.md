@@ -4,12 +4,12 @@ Dorado can trim adapters and/or primer sequences from the beginning and end of D
 RNA reads during basecalling
 
 For DNA basecalls only, trimming can be done as a separate step after basecalling
-using the `dorado trim` subcommand.
+using the Dorado `trim` subcommand.
 
 !!! info "RNA trimming"
 
     RNA trimming is always done in-line with basecalling and cannot be done afterwards
-    using `dorado trim`.
+    using Dorado `trim`.
 
 !!! warning "Demultiplexing trimmed data"
 
@@ -22,7 +22,7 @@ Dorado `basecaller` will attempt to detect any adapter or primer sequences at
 the beginning and end of reads, and remove them from the output sequence.
 
 This functionality can be controlled using either the `--trim` or `--no-trim` options
-with `dorado basecaller`.
+with Dorado `basecaller`.
 
 The `--trim` option takes as its argument one of the following values:
 
@@ -35,7 +35,7 @@ The `--trim` option takes as its argument one of the following values:
 
 ## Trimming existing datasets
 
-The `dorado trim` subcommand can be used to trim adapters and/or primer sequences in
+The Dorado `trim` subcommand can be used to trim adapters and/or primer sequences in
 existing basecalled datasets. To do this, run:
 
 ```dorado
@@ -56,7 +56,7 @@ If it is also your intention to demultiplex the data, then it is recommended tha
 demultiplex before trimming any adapters and primers, as trimming adapters and primers
 first may interfere with correct barcode classification.
 
-The output of `dorado trim` will always be unaligned records, regardless of whether the
+The output of Dorado `trim` will always be unaligned records, regardless of whether the
 input is aligned/sorted or not.
 
 ### CLI reference
@@ -92,7 +92,7 @@ Main arguments:
 
 Dorado searches for primer sequences used in Oxford Nanopore kits. However, you can specify
 an alternative set of primer sequences to search for when trimming either in-line with basecalling,
-or when using `dorado trim` directly.
+or when using Dorado `trim` directly.
 
 In both cases this is accomplished using the `--primer-sequences` argument, followed by the
 path to a `FASTA` file containing the primer sequences you want

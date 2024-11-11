@@ -1,6 +1,6 @@
 # Models
 
-Dorado basecalling relies upon machine learning models to decode the raw nanopore sequencing data. The appropriate model for your data will be automatically selected by `dorado basecaller` using the [model selection complex]({{find("complex")}}). However, you can also manually select a model using the naming conventions below.
+Dorado basecalling relies upon machine learning models to decode the raw nanopore sequencing data. The appropriate model for your data will be automatically selected by Dorado `basecaller` using the [model selection complex]({{find("complex")}}). However, you can also manually select a model using the naming conventions below.
 
 There are a number of factors which define a basecalling model, but the key factors are broadly summarised by the balance of performance and accuracy that models provide, and
 the data that the model was trained to accurately decode.

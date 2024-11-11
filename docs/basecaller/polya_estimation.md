@@ -12,7 +12,7 @@ This feature can be enabled by setting `--estimate-poly-a` argument which is dis
 The estimated tail length is stored in the `pt:i` tag of the output record.
 Reads for which the tail length could not be estimated will not have the `pt:i` tag.
 
-## Custom Poly(A) Tail Configuration
+## Custom poly(A) tail configuration
 
 The default settings for this feature are optimized for non-interrupted poly(A/T)
 sequences that occur at read ends but these setting can be configured using a configuration file

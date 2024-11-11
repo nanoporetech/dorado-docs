@@ -22,7 +22,7 @@ nav:
       - Details:
           - Read Splitting: basecaller/read_splitting.md
           - Moves Table: basecaller/move_table.md
-          - QScore: basecaller/qscore.md
+          - Q-score: basecaller/qscore.md
           - SAM Specification: basecaller/sam_spec.md
   - Models:
       - Introduction: models/models.md

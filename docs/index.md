@@ -132,7 +132,7 @@ Some Dorado subcommands write their business logic output to `stdout` and other 
 Examples of business logic output may be basecalls in a  BAM file generated during basecalling. To write
 these outputs to a file we must redirect the `stdout` output to a file.
 
-Below is an example of writing the `stdout` output from `dorado basecaller` (which by default is a BAM file)
+Below is an example of writing the `stdout` output from Dorado `basecaller` (which by default is a BAM file)
 using the `>` redirection operator. The `stderr` (runtime information) will be written to the terminal as normal.
 
 ```dorado
@@ -154,7 +154,7 @@ dorado basecaller ... > calls.bam &> dorado.log
 ```
 
 Some Dorado subcommands can be "chained" together where the output of one is the input to the other.
-For example, `dorado basecaller` can generate a BAM file which is an input to `dorado demux` which
+For example, Dorado `basecaller` can generate a BAM file which is an input to Dorado `demux` which
 can split this BAM file into files by barcode. This can be done with the `|` pipe operator.
 <!-- why do this? -->
 ```dorado
@@ -175,7 +175,7 @@ Positional arguments are arguments which must be specified in a specific positio
 The order of positional arguments matters. The dorado subcommand is an example of a positional
 argument as shown in the above examples.
 
-Using `dorado basecaller` as another example we can see following part of the `--help` output:
+Using Dorado `basecaller` as another example we can see following part of the `--help` output:
 
 ```text
 Positional arguments:
@@ -197,7 +197,7 @@ dorado basecaller hac reads/ > calls.bam
 
 !!! note inline end
 
-    Optional arguments may be **required** by the `dorado` subcommand.
+    Optional arguments may be **required** by the Dorado subcommand.
 
 Optional arguments are arguments which **may or may not be required**, and may themselves require zero or more
 values as inputs. Optional arguments requiring no additional values are also know as
@@ -210,7 +210,7 @@ one character abbreviation prefixed by a single hyphen such as `-a`.
 Throughout this documentation when describing optional arguments they will be
 shown as `-a / --argument` if an abbreviation exists.
 
-Using `dorado basecaller` again we can see following part of the `--help` output listing the optional arguments:
+Using Dorado `basecaller` again we can see following part of the `--help` output listing the optional arguments:
 
 ```text
 Optional arguments:
