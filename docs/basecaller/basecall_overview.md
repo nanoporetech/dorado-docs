@@ -36,13 +36,13 @@ graph LR
   Barcoding
   Mod Basecalling
   ...]
-  EXTRA --> POST[Sequence
+  EXTRA --> POST["Sequence
   Post-Processing
   ...
   Filtering
   Trimming
   Poly(A) Estimation
-  ...];
+  ..."];
 
   POST --> WRITER[Writer
   ...
