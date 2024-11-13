@@ -12,6 +12,8 @@ much information as possible and the Dorado team will aim to respond promptly.
 
 ### Models
 
+Please check out the [Models Introduction]({{find("models")}}) and [Models List]({{find("list")}}).
+
 #### Which model should I use?
 
 Since Dorado 0.5.0, the [automatic model selection]({{find("complex")}})
@@ -21,11 +23,23 @@ given a model speed (e.g. `fast, hac, sup`). Dorado will automatically download 
 In general, the **latest** basecalling models will be the most performant and most accurate as
 there are continuous advances in model architecture and training.
 
-For more details see [Models Introduction]({{find("models")}}) and the [Models List]({{find("list")}})
+#### Which model did I use?
 
-##### I have R10.4 data
+Dorado will write meta data to the BAM read group (`RG`) header as detailed in the
+[SAM specification]({{find("sam_spec")}}#read-group-header).
 
-Dorado supports basecalling models for R10.4.1 and R9.4.1, but doesn't support basecalling models for the R10.4 condition. Please use the legacy Guppy basecaller, which is available from the Nanopore Community [Downloads page](https://community.nanoporetech.com/downloads).
+The following command can be used to inspect the header and extract the
+basecall model or modified bases model.
+
+```bash
+> samtools view -H calls.bam | grep -oE "\S*models?=\S*"
+DS:basecall_model=dna_r10.4.1_e8.2_400bps_hac@v5.0.0
+modbase_models=dna_r10.4.1_e8.2_400bps_hac@v5.0.0_5mC_5hmC@v2.0.0
+```
+
+#### How do I basecall data from legacy sequencing conditions?
+
+Dorado supports basecalling models for R10.4.1 and R9.4.1, but doesn't support basecalling models for the R10.4 or R10.3 condition. Please use the legacy Guppy basecaller, which is available from the Nanopore Community [Downloads page](https://community.nanoporetech.com/downloads).
 
 ---
 
