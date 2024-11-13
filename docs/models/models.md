@@ -21,7 +21,6 @@ dna_r9.4.1_e8_fast@v3.4
 {analyte}_{pore}_{chemistry}_{speed}@version
 ```
 
-
 ### Sequencing condition
 
 Models are trained on carefully curated datasets for specific nanopore sequencing condition and
@@ -45,7 +44,6 @@ Chemistry Type - `e8 / e8.2`
 Translocation Speed - `130bps / 260bps / 400bps`:
 
 :   This parameter, defines the speed of translocation.
-
 
 ### Speed and Accuracy
 
