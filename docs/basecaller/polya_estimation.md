@@ -1,6 +1,7 @@
 # Poly(A) Estimation
 
-Dorado has initial support for estimating poly(A) tail lengths for cDNA (PCS and PCB kits) and RNA, and can be configured for use with custom primer sequences, interrupted tails, and plasmids.
+Dorado has initial support for estimating poly(A) tail lengths for cDNA (PCS and PCB kits) and RNA,
+and can be configured for use with custom primer sequences, interrupted tails, and plasmids.
 
 !!! info "Poly(A) and Poly(T)"
 
@@ -11,6 +12,8 @@ This feature can be enabled by setting `--estimate-poly-a` argument which is dis
 
 The estimated tail length is stored in the `pt:i` tag of the output record.
 Reads for which the tail length could not be estimated will not have the `pt:i` tag.
+
+Dorado **does not** edit the original basecalled sequence using the results of the poly(A/T) estimate.
 
 ## Custom poly(A) tail configuration
 
