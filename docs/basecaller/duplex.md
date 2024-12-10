@@ -184,5 +184,5 @@ Advanced arguments:
   -t, --threads
   -b, --batchsize             The number of chunks in a batch. If 0 an optimal batchsize will be selected.
   -c, --chunksize             The number of samples in a chunk.
-  -o, --overlap               The number of samples overlapping neighbouring chunks.
+  --overlap                   The number of samples overlapping neighbouring chunks.
 ```
