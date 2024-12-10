@@ -116,18 +116,24 @@ The classification heuristic applied by Dorado is the following:
 
 4. The edit distance of this alignment is assigned as a penalty to each barcode.
 
-Once barcodes are sorted by barcode penalty, the top candidate is checked against the following rules:
+Once barcodes are sorted by barcode penalty, the top candidate is checked against the following rulesets:
 
-1. Is the barcode penalty below `max_barcode_penalty` and the distance between the
-    top 2 barcode penalties greater than `min_barcode_penalty_dist`?.
+1.
+    * The barcode penalty is less than or equal to `max_barcode_penalty`
+    * The distance between top 2 barcode penalties is greater than or equal to `min_barcode_penalty_dist`
+    * The flank score is greater than or equal to `min_flank_score`
 
-2. Is the barcode penalty above `max_barcode_penalty` but the distance between the
-    top 2 barcodes penalties greater then `min_separation_only_dist`?
+2.
+    * The barcode penalty is greater than `max_barcode_penalty`
+    * The distance between top 2 barcodes penalties is greater than or equal to `min_separation_only_dist`
 
-3. Is the flank score below the `min_flank_score`?
+If a candidate meets all criteria in either (1) or (2), and the location of the start/end of the barcode construct
+is within `barcode_end_proximity` bases of the ends of the read, then it is considered a hit.
 
-If a candidate meets (1) or (2) AND (3), and the location of the start/end of the barcode
-construct is within `barcode_end_proximity` bases of the ends of the read, then it is considered a hit.
+For double-ended barcode kits, a read may then be declassified if -
+
+1. The best front or rear barcode is different to the best overall barcode, and has a penalty less than or equal `max_barcode_penalty`
+2. `barcode_both_ends` has been specified, and the best overall barcode does not have both a front and rear barcode penalty less than or equal to `max_barcode_penalty`
 
 | Scoring option | Description |
 | -- | -- |
