@@ -89,7 +89,7 @@ Polishing is both compute and memory intensive. It is best run using multiple th
 
 [Medaka]({{medaka}}) and Dorado `polish` are both assembly polishing tools. They accept the same input formats and produce the same output formats, and in principle they could run the same polishing model to produce equivalent results. However, Dorado `polish` is optimised for higher performance, and can support more accurate models with more computationally intensive architectures. For use cases in low-resource settings (small genomes such as bacteria with CPUs only available) Medaka remains the recommended tool. For large genomes or in other instances where speed is important, we suggest trying Dorado `polish`.
 
-### Should I use `correct` or `polish`?"
+### Should I use `correct` or `polish`?
 
 Dorado `polish` is a post-assembly tool and it is intended to improve the accuracy of pre-existing
 assemblies. Dorado `correct` conversely is a pre-assembly tool and is intended to improve the

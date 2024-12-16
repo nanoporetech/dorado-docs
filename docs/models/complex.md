@@ -80,7 +80,7 @@ See the [Model List](list.md) for a list of all available models.
 | `hac@v4.2.0`  | Simplex basecalling **hac** model with version `v4.2.0` |
 | `hac@v3.5` | Simplex basecalling **hac** model with version `v3.5.0` |
 | `hac,5mCG_5hmCG`  | Latest compatible **hac** simplex model and latest **5mCG_5hmCG** modifications model for the chosen basecall model |
-| `hac,5mCG_5hmCG@v2`  | Latest compatible **hac** simplex model and **5mCG_5hmCG** modifications model with version `v2.0.0` |
+| `hac,5mCG_5hmCG@v3`  | Latest compatible **hac** simplex model and **5mCG_5hmCG** modifications model with version `v3.0.0` |
 | `sup,5mCG_5hmCG,6mA`  | Latest compatible **sup** model and latest compatible **5mCG_5hmCG** and **6mA** modifications models |
 
 Here are some examples of model complexes in use:
