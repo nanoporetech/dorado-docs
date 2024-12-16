@@ -29,11 +29,12 @@ nav:
       - Selection Complex: models/complex.md
       - Downloading Models: models/downloader.md
       - Models List: models/list.md
+  - Assembly:
+      - Dorado Polish: assembly/polish.md
+      - Dorado Correct: assembly/correct.md
   - Help:
       - Troubleshooting: troubleshooting/troubleshooting.md
       - FAQ: troubleshooting/faq.md
-  - Error Correction:
-      - Dorado Correct: correct/correct.md
 
 theme:
   name: material
