@@ -26,5 +26,15 @@ pages:
   artifacts:
     paths:
       - public
+  variables:
+    PAGES_PREFIX: ""
+    PAGES_EXPIRE: "never"
+  pages:
+    path_prefix: "$PAGES_PREFIX"
+    expire_in: "$PAGES_EXPIRE"
   rules:
-    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH # Run on default branch (with default PAGES_PREFIX)
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Conditionally change the prefix for Merge Requests
+      variables:
+        PAGES_PREFIX: "mr-$CI_MERGE_REQUEST_IID" # Prefix with the mr-<iid>, like `mr-123`
+        PAGES_EXPIRE: "1 week"
