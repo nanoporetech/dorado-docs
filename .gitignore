@@ -11,3 +11,4 @@ site/
 public/
 site/
 build/
+venv/

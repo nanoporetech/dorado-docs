@@ -5,6 +5,10 @@ bgzip: https://www.htslib.org/doc/bgzip.html
 
 # Dorado Correct
 
+!!! tip inline end "Should I use `correct` or `polish`?"
+
+    [See here]({{find("polish")}}#should-i-use-correct-or-polish)
+
 Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm in Dorado `correct`.
 
 ## HERRO Algorithm
