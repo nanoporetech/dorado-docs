@@ -74,19 +74,19 @@ midstrand_flank_score = 0.95
 
 The table below describes the arrangement options in more detail.
 
-| Option | Required | Description |
-| -- | -- | -- |
-| name | **Yes** | Name of the barcode arrangement. This name will be used to report the barcode classification. |
-| kit | | Which class of barcodes this arrangement belongs to (if any). |
-| mask1_front | **Yes** | The leading flank for the front barcode. ^[1,2]^ |
-| mask1_rear | **Yes** | The trailing flank for the front barcode. ^[1,2]^ |
-| mask2_front | | The leading flank for the rear barcode. ^[1,3]^ |
-| mask2_rear | | The trailing flank for the rear barcode. ^[1,3]^ |
-| barcode1_pattern | **Yes** | An expression capturing the sequences to use for the front barcode. ^[4]^ |
-| barcode2_pattern | | An expression capturing the sequences to use for the rear barcode. ^[4]^ |
-| first_index | **Yes** | Start index for range of barcode sequences to use in the arrangement. Used in combination with the `last_index`. |
-| last_index | **Yes** | End index for range of barcode sequences to use in the arrangement. Used in combination with the `first_index`. |
-| rear_only_barcodes | | For single ended barcodes, the barcode is at the rear of the read rather than the front (e.g for an RNA kit). |
+| Option             | Required | Description                                                                                                      |
+| ------------------ | -------- | ---------------------------------------------------------------------------------------------------------------- |
+| name               | **Yes**  | Name of the barcode arrangement. This name will be used to report the barcode classification.                    |
+| kit                |          | Which class of barcodes this arrangement belongs to (if any).                                                    |
+| mask1_front        | **Yes**  | The leading flank for the front barcode. ^[1,2]^                                                                 |
+| mask1_rear         | **Yes**  | The trailing flank for the front barcode. ^[1,2]^                                                                |
+| mask2_front        |          | The leading flank for the rear barcode. ^[1,3]^                                                                  |
+| mask2_rear         |          | The trailing flank for the rear barcode. ^[1,3]^                                                                 |
+| barcode1_pattern   | **Yes**  | An expression capturing the sequences to use for the front barcode. ^[4]^                                        |
+| barcode2_pattern   |          | An expression capturing the sequences to use for the rear barcode. ^[4]^                                         |
+| first_index        | **Yes**  | Start index for range of barcode sequences to use in the arrangement. Used in combination with the `last_index`. |
+| last_index         | **Yes**  | End index for range of barcode sequences to use in the arrangement. Used in combination with the `first_index`.  |
+| rear_only_barcodes |          | For single ended barcodes, the barcode is at the rear of the read rather than the front (e.g for an RNA kit).    |
 
 1. Can be empty string.
 2. Applies to single and double-ended barcodes.
@@ -118,12 +118,14 @@ The classification heuristic applied by Dorado is the following:
 
 Once barcodes are sorted by barcode penalty, the top candidate is checked against the following rulesets:
 
-1.
+* Ruleset 1:
+
     * The barcode penalty is less than or equal to `max_barcode_penalty`
     * The distance between top 2 barcode penalties is greater than or equal to `min_barcode_penalty_dist`
     * The flank score is greater than or equal to `min_flank_score`
 
-2.
+* Ruleset 2:
+
     * The barcode penalty is greater than `max_barcode_penalty`
     * The distance between top 2 barcodes penalties is greater than or equal to `min_separation_only_dist`
 
@@ -135,18 +137,18 @@ For double-ended barcode kits, a read may then be declassified if -
 1. The best front or rear barcode is different to the best overall barcode, and has a penalty less than or equal `max_barcode_penalty`
 2. `barcode_both_ends` has been specified, and the best overall barcode does not have both a front and rear barcode penalty less than or equal to `max_barcode_penalty`
 
-| Scoring option | Description |
-| -- | -- |
-| max_barcode_penalty | The maximum edit distance allowed for a classified barcode. Considered in conjunction with the `min_barcode_penalty_dist` parameter. |
-| min_barcode_penalty_dist | The minimum penalty difference between top-2 barcodes required for classification. Used in conjunction with `max_barcode_penalty`. |
-| min_separation_only_dist | The minimum penalty difference between the top-2 barcodes required for classification when the `max_barcode_penalty` is not met. |
-| barcode_end_proximity | Proximity of the end of the barcode construct to the ends of the read required for classification. |
-| flank_left_pad | Number of bases to use from preceding flank during barcode alignment. |
-| flank_right_pad | Number of bases to use from succeeding flank during barcode alignment. |
-| front_barcode_window | Number of bases at the front of the read within which to look for barcodes. |
-| rear_barcode_window | Number of bases at the rear of the read within which to look for barcodes. |
-| min_flank_score | Minimum score for the flank alignment. Score here is 1.f - (edit distance) / flank_length |
-| midstrand_flank_score | Minimum score for a flank alignment that is not at read ends to be considered as a mid-strand barcode. Score here is 1.f - (edit distance) / flank_length |
+| Scoring option           | Description                                                                                                                                               |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| max_barcode_penalty      | The maximum edit distance allowed for a classified barcode. Considered in conjunction with the `min_barcode_penalty_dist` parameter.                      |
+| min_barcode_penalty_dist | The minimum penalty difference between top-2 barcodes required for classification. Used in conjunction with `max_barcode_penalty`.                        |
+| min_separation_only_dist | The minimum penalty difference between the top-2 barcodes required for classification when the `max_barcode_penalty` is not met.                          |
+| barcode_end_proximity    | Proximity of the end of the barcode construct to the ends of the read required for classification.                                                        |
+| flank_left_pad           | Number of bases to use from preceding flank during barcode alignment.                                                                                     |
+| flank_right_pad          | Number of bases to use from succeeding flank during barcode alignment.                                                                                    |
+| front_barcode_window     | Number of bases at the front of the read within which to look for barcodes.                                                                               |
+| rear_barcode_window      | Number of bases at the rear of the read within which to look for barcodes.                                                                                |
+| min_flank_score          | Minimum score for the flank alignment. Score here is 1.f - (edit distance) / flank_length                                                                 |
+| midstrand_flank_score    | Minimum score for a flank alignment that is not at read ends to be considered as a mid-strand barcode. Score here is 1.f - (edit distance) / flank_length |
 
 For `flank_left_pad` and `flank_right_pad`, something in the range of 5-10 bases is typically good.
 Note that errors from this padding region are also part of the barcode alignment penalty.
