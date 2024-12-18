@@ -39,14 +39,14 @@ The Dorado `trim` subcommand can be used to trim adapters and/or primer sequence
 existing basecalled datasets. To do this, run:
 
 ```dorado
-dorado trim <calls> > trimmed.bam
+dorado trim <calls> --sequencing-kit <kit> > trimmed.bam
 ```
 
 `<calls>` can either be an HTS format file (e.g. FASTQ, BAM, etc.) or a stream of an
-HTS format (e.g. the output of Dorado basecalling).
+HTS format (e.g. the output of Dorado basecalling). `<kit>` must be the sequencing kit used.
 
 ```dorado
-dorado basecaller <model> <reads> ... | dorado trim > trimmed.bam
+dorado basecaller <model> <reads> ... | dorado trim --sequencing-kit <kit> > trimmed.bam
 ```
 
 The `--no-trim-primers` option can be used to prevent the trimming of primer sequences.
@@ -63,7 +63,10 @@ input is aligned/sorted or not.
 
 ```bash
 Positional arguments:
-  reads               Path to a file with reads to trim. Can be in any HTS format. [nargs: 0 or more]
+  reads               Path to a file with reads to trim. Can be in any HTS format.
+
+Required arguments:
+  -k, --sequencing-kit  Sequencing kit name to use for selecting adapters and primers to trim.
 
 Optional arguments:
   -h, --help          shows help message and exits
