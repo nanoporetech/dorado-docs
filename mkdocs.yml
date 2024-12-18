@@ -15,6 +15,7 @@ nav:
       - Barcoding:
           - Barcode Classification: barcoding/barcoding.md
           - Custom Barcodes: barcoding/custom_barcodes.md
+          - Custom Primers: barcoding/custom_primers.md
           - Sample Sheet: barcoding/sample_sheet.md
       - Alignment: basecaller/alignment.md
       - Read Trimming: basecaller/read_trimming.md
