@@ -19,7 +19,11 @@ using the Dorado `trim` subcommand.
 ## Trimming while basecalling
 
 Dorado `basecaller` will attempt to detect any adapter or primer sequences at
-the beginning and end of reads, and remove them from the output sequence.
+the beginning and end of reads, and remove them from the output sequence. The
+sequences searched for will depend on the sequencing-kit used, which is normally
+embedded as metadata within pod5 files. Note that currently only kit14 sequencing
+kits are supported, so if an older or non-standard kit was used, no adapter or
+primer trimming will be performed.
 
 This functionality can be controlled using either the `--trim` or `--no-trim` options
 with Dorado `basecaller`.
@@ -43,7 +47,9 @@ dorado trim <calls> --sequencing-kit <kit> > trimmed.bam
 ```
 
 `<calls>` can either be an HTS format file (e.g. FASTQ, BAM, etc.) or a stream of an
-HTS format (e.g. the output of Dorado basecalling). `<kit>` must be the sequencing kit used.
+HTS format (e.g. the output of Dorado basecalling).
+
+`<kit>` must be provided to specify the sequencing kit used, since this is not encoded in FASTQ or BAM files.
 
 ```dorado
 dorado basecaller <model> <reads> ... | dorado trim --sequencing-kit <kit> > trimmed.bam
