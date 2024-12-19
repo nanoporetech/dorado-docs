@@ -273,7 +273,9 @@ page, please add debugging output if possible.
 Many of Dorado's subcommands may be able to make use of modern GPU (Graphical Processing Unit) hardware (e.g. Nvidia CUDA GPUs). Dorado subcommands which support GPU acceleration will provide the `-x` / `--device` command line
 argument.
 
-The valid values for the `-x` / `--device` argument are `cpu`, `metal` and `cuda:*`.
+The valid values for the `-x` / `--device` argument are `auto`, `cpu`, `metal` (macOS) and `cuda:*` (Linux/Windows).
+
+`auto` will attempt to determine the available GPU resources and select these if available (`metal` for macOS, `cuda:all` for Linux/Windows), or fall back to `cpu` if none are present.
 
 The `*` in `cuda:*` can be used to select which specific CUDA devices are used.
 
@@ -283,30 +285,20 @@ Valid examples are:
 * `cuda:1,2,3` select the second, third, and fourth device.
 * `cuda:all` and `cuda:auto` select **all** devices
 
-The default chosen for `-x` / `--device` is reported in the `--help` for each command.
+Dorado recognises the environment variable `CUDA_VISIBLE_DEVICES`, which should be given as a comma-separated sequence of GPU identifiers. Identifiers may be either integers or UUIDs, but not both.
+Only the devices whose identifier is present in the sequence are visible to Dorado, and they are enumerated in the order of the sequence.
 
-=== "Linux & Windows"
+Valid examples are:
 
-    ```text hl_lines="7"
-    ❯ dorado basecaller --help
-    [info] Running: "basecaller" "--help"
-    ...
-    Optional arguments:
-      -h, --help                  shows help message and exits
-      -v, --verbose               [may be repeated]
-      -x, --device                device string in format ... [default: "cuda:all"]
-    ...
-    ```
+* `CUDA_VISIBLE_DEVICES="0,1"`    - makes available GPU ids 0 and 1 as `cuda:0` and `cuda:1`
+* `CUDA_VISIBLE_DEVICES="2"`      - makes available GPU id 2 as `cuda:0`
+* `CUDA_VISIBLE_DEVICES="<UUID>"` - makes available the GPU with the specified UUID as `cuda:0`
 
-=== "MacOS"
+`cuda:all` will select all devices identified in this fashion.
 
-    ```text hl_lines="7"
-    ❯ dorado basecaller --help
-    [info] Running: "basecaller" "--help"
-    ...
-    Optional arguments:
-      -h, --help                  shows help message and exits
-      -v, --verbose               [may be repeated]
-      -x, --device                device string in format ... [default: "metal"]
-    ...
-    ```
+If one of the identifiers is invalid, only the devices whose identifiers precede the invalid value are visible to Dorado. Invalid examples would be:
+
+* `CUDA_VISIBLE_DEVICES="0,<UUID>"`    - mixed integer index and UUID, only index 0 will be selected
+* `CUDA_VISIBLE_DEVICES="<UUID>,1"`    - mixed integer index and UUID, only UUID will be selected
+* `CUDA_VISIBLE_DEVICES="0,mygpu,1"`   - invalid identifier `mygpu`, only index 0 will be selected
+* `CUDA_VISIBLE_DEVICES="0,1,1"`       - duplicate identifier, no devices will be selected
