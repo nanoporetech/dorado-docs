@@ -21,13 +21,13 @@ using the Dorado `trim` subcommand.
 Dorado `basecaller` will attempt to detect any adapter or primer sequences at
 the beginning and end of reads, and remove them from the output sequence. The
 sequences searched for will depend on the sequencing-kit used, which is normally
-embedded as metadata within pod5 files. Note that currently only kit14 sequencing
+embedded as metadata within pod5 files. Note that by default only kit14 sequencing
 kits are supported, so if an older or non-standard kit was used, no adapter or
 primer trimming will be performed.
 
 Dorado will also attempt to infer the orientation of the read from any detected primers.
 If the orientation can be inferred, then the output BAM record for the read will include
-the `TS:A:[+/-]` tag, with a "+" indicating 5' to 3' orientation, and a "-" indicating
+the `TS:A:[+/-]` tag, with a `+` indicating 5' to 3' orientation, and a `-` indicating
 3' to 5' orientation.  This is primarily useful for cDNA protocols, as most other current
 sequencing protocols do not include primers.
 
@@ -40,7 +40,6 @@ The `--trim` option takes as its argument one of the following values:
 | Option    | Adapters | Primers | Barcodes | Description |
 | ------:    | :--------:|:-------: | :--------: | ----------- |
 | `all` | :material-content-cut: | :material-content-cut: | :material-content-cut: | Detected adapters or primers will be trimmed.<br />If barcoding is enabled, detected barcodes will be trimmed.<br />This is the default option |
-| `primers` | :material-content-cut: | :material-content-cut: | | Detected adapters or primers will be trimmed.<br />If barcoding is enabled, detected barcodes will **not** be trimmed. |
 | `adapters`| :material-content-cut: | | | Detected adapters will be being trimmed, but primers will **not** be trimmed.<br />If barcoding is enabled, detected barcodes will **not** be trimmed. |
 | `none`    | | | | Nothing will be trimmed. Equivalent to `--no-trim`     |
 
