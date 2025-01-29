@@ -53,11 +53,9 @@ for `rear` sequence near the end of the read.
 
 For **primers**:
 
-:   Dorado will search for the `front` and `rear` sequences near the beginning and end
-of the read.
-
-    Dorado will also search for the reverse-complement of the `rear` sequence near
-the beginning of the read, and for the reverse-complement of the `front` sequence near the end of the read.
+:   Dorado will search for the `front` sequence near the beginning of the read, and the reverse-complement of the
+`rear` sequence near the end of the read. Dorado will also search for the `rear` sequence near the beginning of
+the read, and for the reverse-complement of the `front` sequence near the end of the read.
 
 The `kits` designator is optional. If provided, the sequence will only be searched for if
 the sequencing-kit information in the read matches any of the kit names in the custom file.
