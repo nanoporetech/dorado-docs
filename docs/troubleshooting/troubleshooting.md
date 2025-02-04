@@ -121,6 +121,12 @@ Use a command like the following to change path as appropriate:
     $ export DYLD_LIBRARY_PATH=<PATH_TO_DORADO>/dorado-{{dorado.version}}-osx-arm64/lib:$DYLD_LIBRARY_PATH
     ```
 
+### Windows GPU performance
+
+On Windows systems with Nvidia GPUs, open Nvidia Control Panel, navigate into “Manage 3D settings” and then
+set “CUDA - Sysmem Fallback Policy” to “Prefer No Sysmem Fallback”.  This will provide a significant
+performance improvement.
+
 ### Windows PowerShell encoding
 
 When running in PowerShell on Windows, care must be taken, as the default encoding for application
