@@ -28,12 +28,16 @@ primer trimming will be performed.
 Dorado will also attempt to infer the orientation of the read from any detected primers.
 If the orientation can be inferred, then the output BAM record for the read will include
 the `TS:A:[+/-]` tag, with a `+` indicating 5' to 3' orientation, and a `-` indicating
-3' to 5' orientation.  This is primarily useful for cDNA protocols, as most other current
-sequencing protocols do not include primers.
+3' to 5' orientation.
+
+In the specific cases of the SQK-PCS114 and SQK-PCB114 sequencing kits, if a UMI tag is
+present, it will also be detected and trimmed. Additionally, the UMI tag, if found, will
+be included in the BAM output for the read using the `RX:Z` tag.
 
 This functionality can be controlled using either the `--trim` or `--no-trim` options
-with Dorado `basecaller`. Note that if primer trimming is not enabled, then no primers will
-be detected, and strand orientation cannot be inferred.
+with Dorado `basecaller`. Note that if primer trimming is not enabled, then no attempt
+will be made to detect primers, or to classify the orientation of the strand based on
+them, or to detect UMI tags.
 
 The `--trim` option takes as its argument one of the following values:
 
