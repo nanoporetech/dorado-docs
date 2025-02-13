@@ -157,7 +157,7 @@ Therefore a bigger padding region may require a higher `max_barcode_penalty` for
 ## Sequences file
 
 In addition to specifying a custom barcode arrangement, new barcode sequences can also be specified
-in a FASTQ format.
+in a FASTA format.
 
 There are 2 requirements:
 
