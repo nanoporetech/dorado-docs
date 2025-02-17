@@ -57,7 +57,7 @@ Dorado has been tested extensively and supported on the following systems:
 | Linux arm64   | Jetson Orin    | Linux for Tegra ≥34.1.1 |
 | Windows x86_64 | (G)V100, A100 | CUDA Driver ≥452.39 |
 |               | H100           | CUDA Driver ≥520 |
-| Apple         | Apple Silicon (M1/M2/M3) | |
+| Apple         | Apple Silicon (M series) | macOS ≥13 |
 
 Linux x86 or Windows systems not listed above but which have Nvidia GPUs with ≥8 GB VRAM and architecture
 from Pascal onwards (except P100/GP100) have not been widely tested but are expected to work.
