@@ -11,7 +11,6 @@ Dorado supports modified basecalling and implements this as an extension to the
 normal `simplex` and `duplex` basecalling subcommands. In either case it can activated with
 the addition of a modified basecalling model as shown in the [usage guide](#usage) below.
 
-
 ### Supported modifications
 
 The modifications listed here are **not** necessarily available for all model speeds, and / or versions.
@@ -20,21 +19,21 @@ Please check the **[Models List]({{find("list")}})** for which modifications are
 
 #### DNA modifications
 
-| Mod | Name | CHEBI |
-| |  |  |
-| **4mC** | N(4)-methylcytosine | [CHEBI:21839](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:21839) |
-| **5mC** | 5-Methylcytosine | [CHEBI:27551](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:27551) |
-| **5hmC** | 5-Hydroxymethylcytosine | [CHEBI:76792](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:76792) |
-| **6mA** | 6-Methyladenine | [CHEBI:28871](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:28871) |
+| Mod | Name | SAM Code | CHEBI |
+|     |      |          |       |
+| **5mC**  | 5-Methylcytosine        | `C+m`     | [CHEBI:27551](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:27551) |
+| **5hmC** | 5-Hydroxymethylcytosine | `C+h`     | [CHEBI:76792](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:76792) |
+| **4mC**  | N(4)-methylcytosine     | `C+21839` | [CHEBI:21839](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:21839) |
+| **6mA**  | 6-Methyladenine         | `A+a`     | [CHEBI:28871](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:28871) |
 
 #### RNA modifications
 
-| Mod | Name | CHEBI |
-| |  |  |
-| **inosine** | Inosine | [CHEBI:17596](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:17596) |
-| **m5C** | 5-Methylcytosine | [CHEBI:27551](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:27551) |
-| **m6A** | N(6)-Methyladenosine | [CHEBI:21891](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:21891) |
-| **pseU** | Pseudouridine | [CHEBI:17802](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:17802) |
+| Mod | Name | SAM Code | CHEBI |
+|     |      |          |       |
+| **m5C**     | 5-Methylcytosine     | `C+m`     | [CHEBI:27551](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:27551) |
+| **m6A**     | N(6)-Methyladenosine | `A+a`     | [CHEBI:21891](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:21891) |
+| **inosine** | Inosine              | `A+17596` | [CHEBI:17596](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:17596) |
+| **pseU**    | Pseudouridine        | `T+17802` | [CHEBI:17802](https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:17802) |
 
 ### Modification context
 
