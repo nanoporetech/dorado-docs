@@ -10,6 +10,7 @@ bgzip: https://www.htslib.org/doc/bgzip.html
     [See here]({{find("polish")}}#should-i-use-correct-or-polish)
 
 Dorado supports single-read error correction with the integration of the [HERRO]({{herro}}) algorithm in Dorado `correct`.
+`dorado correct` is essentially a reimplementation of the HERRO algorithm.
 
 ## HERRO Algorithm
 
@@ -29,7 +30,7 @@ can be downloaded from [bioRxiv](https://www.biorxiv.org/content/10.1101/2024.05
 
 ## Quick start
 
-To run Dorado `correct`, pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file.
+To run Dorado `correct`, pass in a FASTQ or a [bgz]({{bgzip}}) compressed FASTQ.gz file. Note that `bgzip` needs to be used for compression instead of the vanilla `gzip` because Htslib does not support FASTA/FASTQ with plain `gzip`.
 Dorado will perform read correction on this dataset after automatically downloading the
 required [HERRO]({{herro}}) model.
 
@@ -56,8 +57,6 @@ dorado correct reads.fastq --model-path herro-v1 > corrected_reads.fasta
 ## Usage
 
 Dorado `correct` supports FASTQ(.gz) as the input and generates a FASTA file as output.
-A FASTQ file is either a FASTA or FASTQ file and either can be uncompressed
-or compressed with [bgzip]({{bgzip}}).
 
 An index file is generated for the input FASTQ file in the same folder unless
 one is already present. Please ensure that the folder with the input file is writeable
@@ -78,7 +77,7 @@ dorado download --model herro-v1
 dorado correct --model-path herro-v1 reads.fq.gz > corrected_reads.fasta
 ```
 
-### Split mapping and inference
+### Separate mapping and inference
 
 Dorado `correct` can run mapping (CPU-only stage) and inference (GPU-intensive stage) individually.
 This enables separation of the CPU and GPU heavy stages into individual steps which can
@@ -139,11 +138,42 @@ As a result, it is best run on a system with:
 * large system memory ( > 256GB)
 * a modern GPU with a large VRAM ( > 32GB)
 
-## Troubleshooting
+#### HPC support
+Dorado `correct` now also provides a feature to enable simpler distributed computation.
+It is now possible to run a single block of the input target reads file, specified by the block ID. This enables granularization of the correction process, making it possible to easily utilise distributed HPC architectures.
 
-### Consuming too much memory
+For example, this is now possible:
+```bash
+# Determine the number of input target blocks.
+num_blocks=$(dorado correct in.fastq --compute-num-blocks)
 
-In case the process is consuming too much memory for your system, try running it with a smaller
+# For every block, run correction of those target reads.
+for ((i=0; i<${num_blocks}; i++)); do
+    dorado correct in.fastq --run-block-id ${i} > out.block_${i}.fasta
+done
+
+# Optionally, concatenate the corrected reads.
+cat out.block_*.fasta > out.all.fasta
+```
+
+On an HPC system, individual blocks can simply be submitted to the cluster management system. For example:
+```bash
+# Determine the number of input target blocks.
+num_blocks=$(dorado correct in.fastq --compute-num-blocks)
+
+# For every block, run correction of those target reads.
+for ((i=0; i<${num_blocks}; i++)); do
+    qsub <options> dorado correct in.fastq --run-block-id ${i} > out.block_${i}.fasta
+done
+```
+
+In case that the available HPC nodes do not have GPUs available, the CPU power of those nodes can still be leveraged for overlap computation - it is possible to combine a blocked run with the `--to-paf` option. Inference stage can then be run afterwards on another node with GPU devices from the generated PAF and the `--from-paf` option.
+
+## Frequently asked questions / Troubleshooting
+
+### High memory consumption
+
+In case the process is consuming too much memory (RAM) for your system, try running it with a smaller
 index size. For example:
 
 ```dorado
@@ -166,7 +196,13 @@ please check the following:
 1. The input dataset has average read length >=10kbp.
       * Dorado Correct is designed for long reads, and it will not work on short libraries.
 2. Input coverage is reasonable, preferably >=30x.
-      * Check the average base qualities of the input dataset. Dorado Correct expects accurate inputs for both mapping and inference.
+3. Check the average base qualities of the input dataset. Dorado Correct expects accurate inputs for both mapping and inference.
+
+### Some corrected reads have a suffix of type `:0`, `:1`, etc.
+
+When a region of an input read has low/zero coverage, Dorado `correct` (and HERRO) will split it in this region and produce one or more chunks for that read.
+
+If this occurs, the corrected chunks will have a suffix of type `:<number>` added to the header, where `<number>` is the ordinal ID of this chunk along the input read.
 
 ## CLI reference
 
