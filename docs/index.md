@@ -147,10 +147,10 @@ dorado basecaller ... > calls.bam
     tail -f dorado.log
     ```
 
-To write the `stderr` runtime information to a log file use the `&>` `stderr` redirection operator.
+To write the `stderr` runtime information to a log file use the `2>` `stderr` redirection operator.
 
 ```dorado
-dorado basecaller ... > calls.bam &> dorado.log
+dorado basecaller ... > calls.bam 2> dorado.log
 ```
 
 Some Dorado subcommands can be "chained" together where the output of one is the input to the other.
