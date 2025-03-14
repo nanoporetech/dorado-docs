@@ -24,7 +24,7 @@ reflected in the read group name as well as in the `BC` tag of the output record
 The output from Dorado `basecaller` can then be demultiplexed into per-barcode BAMs using Dorado `demux`.
 
 If the barcoded reads are already classified when in-line barcoding, ensure the
-`--no-classify` argument is set, otherwise demux will search for barcodes again
+`--no-classify` argument is set, otherwise `demux` will search for barcodes again
 causing issues if reads are [trimmed]({{find("read_trimming")}}).
 
 ```dorado
@@ -47,7 +47,7 @@ file names. We recommend using Dorado `demux` to split barcoded BAMs.
 
 !!! warning
 
-    Ensure `--no-trim` was set during basecalling otherwise duplex will fail to classify reads as they
+    Ensure `--no-trim` was set during basecalling otherwise `demux`` will fail to classify reads as they
     have had their barcodes removed.
 
 Existing basecalled datasets **which have not been trimmed** can be classified and demultiplexed
