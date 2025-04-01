@@ -51,13 +51,11 @@ Once the relevant `.tar.gz` or `.zip` archive has been downloaded, extract the a
 Dorado has been tested extensively and supported on the following systems:
 
 | Platform | GPU/CPU | Minimum Software Requirements |
-| -------- |---------|-------------------------------|
-| Linux x86_64  | (G)V100, A100  | CUDA Driver ≥450.80.02 |
-|               | H100           | CUDA Driver ≥520 |
-| Linux arm64   | Jetson Orin    | Linux for Tegra ≥34.1.1 |
-| Windows x86_64 | (G)V100, A100 | CUDA Driver ≥452.39 |
-|               | H100           | CUDA Driver ≥520 |
-| Apple         | Apple Silicon (M series) | macOS ≥13 |
+| --- |---------|--------------|
+| Linux x86_64  | (G)V100, A100, H100 | CUDA Driver ≥525.105 |
+| Linux arm64 | Jetson Orin | Linux for Tegra ≥36.4.3 (JetPack ≥6.2) |
+| Windows x86_64 | (G)V100, A100, H100 | CUDA Driver ≥529.19 |
+| Apple | Apple Silicon (M series) | macOS ≥13 |
 
 Linux x86 or Windows systems not listed above but which have Nvidia GPUs with ≥8 GB VRAM and architecture
 from Pascal onwards (except P100/GP100) have not been widely tested but are expected to work.

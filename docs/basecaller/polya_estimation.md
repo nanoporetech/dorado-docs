@@ -11,7 +11,9 @@ and can be configured for use with custom primer sequences, interrupted tails, a
 This feature can be enabled by setting `--estimate-poly-a` argument which is disabled by default.
 
 The estimated tail length is stored in the `pt:i` tag of the output record.
-Reads for which the tail length could not be estimated will not have the `pt:i` tag.
+Reads for which the tail length could not be estimated will have a value of -1 for the `pt:i` tag
+if the primer anchor for the tail was not found, or a value of 0 if the primer anchor was found, but
+the length could not be estimated.
 
 Dorado **does not** edit the original basecalled sequence using the results of the poly(A/T) estimate.
 
