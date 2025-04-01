@@ -1,5 +1,6 @@
 stages:
   - deploy
+  - rtd
 
 pages:
   image: ${CI_REGISTRY}/traque/ont-docker-base/ont-base-python:3.10
@@ -22,3 +23,21 @@ pages:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event" # Conditionally change the prefix for Merge Requests
       variables:
         PAGES_PREFIX: "mr-$CI_MERGE_REQUEST_SOURCE_BRANCH_NAME" # Prefix with the mr-<name>, like `mr-fix_issue_123`
+
+rtd_build:
+  image: ${CI_REGISTRY}/traque/ont-docker-base/ont-base-python:3.10
+  stage: rtd
+  script:
+  - |
+    if [ "$CI_COMMIT_BRANCH" = "main" ]; then
+      BRANCH_NAME=latest
+    else
+      BRANCH_NAME=$CI_COMMIT_BRANCH
+    fi
+    curl -X POST -d "branches=${BRANCH_NAME}" -d "token=${RTD_TOKEN}" ${RTD_WEBHOOK}
+  rules:
+    - if: '$CI_COMMIT_BRANCH =~ /^(\d+\.\d+\.\d+)$/'
+      when: manual
+    - if: '$CI_COMMIT_BRANCH == "main"'
+      when: manual
+    - when: never
