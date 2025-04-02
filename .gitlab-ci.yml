@@ -34,9 +34,12 @@ rtd_build:
     else
       BRANCH_NAME=$CI_COMMIT_BRANCH
     fi
-    curl -X POST -d "branches=${BRANCH_NAME}" -d "token=${RTD_TOKEN}" ${RTD_WEBHOOK}
+    response=$(curl -X POST -d "branches=${BRANCH_NAME}" -d "token=${RTD_TOKEN}" ${RTD_WEBHOOK})
+    echo "$response"
   rules:
     - if: '$CI_COMMIT_BRANCH =~ /^(\d+\.\d+\.\d+)$/'
       when: manual
+      allow_failure: true
     - if: '$CI_COMMIT_BRANCH == "main"'
       when: manual
+      allow_failure: true
