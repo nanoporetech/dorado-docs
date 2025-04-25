@@ -39,7 +39,16 @@ modbase_models=dna_r10.4.1_e8.2_400bps_hac@v5.0.0_5mC_5hmC@v3.0.0
 
 #### How do I basecall data from legacy sequencing conditions?
 
-Dorado supports basecalling models for R10.4.1 and R9.4.1, but doesn't support basecalling models for the R10.4 or R10.3 condition. Please use the legacy Guppy basecaller, which is available from the Nanopore Community [Downloads page](https://community.nanoporetech.com/downloads).
+Dorado supports basecalling for the DNA R10.4.1 and RNA004 conditions, but doesn't support basecalling
+for the legacy RNA002, R9.4.1, R10.3, and R10.4 conditions.
+
+The DNA R9.4.1 and RNA002 conditions were deprecated as of Dorado v1.0.0.
+
+[Dorado v0.9.6](https://github.com/nanoporetech/dorado/releases/tag/v0.9.6) was the last release which
+supported DNA R9.4.1 and RNA002 conditions.
+
+For R10.4 and R10.3, please use the legacy Guppy basecaller, which is available from the
+Nanopore Community [Downloads page](https://community.nanoporetech.com/downloads).
 
 ---
 

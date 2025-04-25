@@ -14,7 +14,6 @@ run settings (defined [here](#sequencing-condition)). Below are some examples of
 ```text
 dna_r10.4.1_e8.2_400bps_sup@v5.0.0
 rna004_130bps_hac@v5.0.0
-dna_r9.4.1_e8_fast@v3.4
 ```
 
 ```text
@@ -28,18 +27,18 @@ as such they are each assigned specific names to denote which condition they are
 
 The sequencing condition will typically denote the following features:
 
-Analyte Type - `dna / rna002 / rna004`
+Analyte Type - `dna / rna004`
 
-:   This denotes the type of analyte being sequenced. For DNA sequencing, this will be `dna`. If you are using a Direct RNA Sequencing Kit, this will be `rna002` or `rna004`, depending on the kit.
+:   This denotes the type of analyte being sequenced. For DNA sequencing, this will be `dna`. If you are using a Direct RNA Sequencing Kit, this will be `rna004`.
 
-Pore Type - `r9.4.1 / r10.4.1`
+Pore Type - `r10.4.1`
 
 :   This section corresponds to the type of flow cell used. For instance, `FLO-MIN114 / FLO-FLG114` is
-indicated by `r10.4.1`, while `FLO-MIN106D / FLO-FLG001` is signified by `r9.4.1`.
+indicated by `r10.4.1`.
 
-Chemistry Type - `e8 / e8.2`
+Chemistry Type - `e8.2`
 
-:   This represents the chemistry type, which corresponds to the kit used for sequencing. For example, Kit 14 chemistry is denoted by `e8.2` and Kit 10 or Kit 9 are denoted by `e8`.
+:   This represents the chemistry type, which corresponds to the kit used for sequencing. For example, Kit 14 chemistry is denoted by `e8.2`.
 
 Translocation Speed - `130bps / 260bps / 400bps`:
 
@@ -50,7 +49,7 @@ Translocation Speed - `130bps / 260bps / 400bps`:
 Typically for each model generation, 3 models are available and are named `fast`, `hac`
 (high-accuracy), and `sup` (super-accurate). These are in order of increasing basecalling
 accuracy where `fast` is the least accurate and `sup` is the most accurate.  In general,
-larger models are more accurate but are more computationally expesinve to evaluate.
+larger models are more accurate but are more computationally expensive to evaluate.
 
 As such, **we recommend the `hac` model for most users**
 as it strikes the best balance between accuracy and computational cost.

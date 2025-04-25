@@ -15,6 +15,12 @@ especially the section on [Model Version Numbers]({{find("models")}}#model-versi
 
 The bolded models are for the **latest** released condition.
 
+!!! info "Deprecated models"
+
+    The DNA R9.4.1 and RNA002 models were deprecated in Dorado v1.0.0 release.
+
+    [Help on basecalling legacy conditions]({{find("faq")}}#how-do-i-basecall-data-from-legacy-sequencing-conditions).
+
 ## DNA Models
 
 | Basecalling Models | Compatible<br />Modifications | Modifications<br />Model<br />Version | Data<br />Sampling<br />Frequency |
