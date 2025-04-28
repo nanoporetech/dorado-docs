@@ -87,7 +87,6 @@ The table below describes the arrangement options in more detail.
 | first_index        | **Yes**  | Start index for range of barcode sequences to use in the arrangement. Used in combination with the `last_index`. |
 | last_index         | **Yes**  | End index for range of barcode sequences to use in the arrangement. Used in combination with the `first_index`.  |
 | rear_only_barcodes |          | For single ended barcodes, the barcode is at the rear of the read rather than the front (e.g for an RNA kit).    |
-| rna_barcodes       |          | Indicates barcodes are for an RNA kit. This skips signal-space adapter trimming.                                 |
 
 1. Can be empty string.
 2. Applies to single and double-ended barcodes.
