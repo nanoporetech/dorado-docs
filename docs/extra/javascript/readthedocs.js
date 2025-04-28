@@ -6,6 +6,11 @@ https://docs.readthedocs.io/en/stable/intro/mkdocs.html#integrate-the-read-the-d
 document.addEventListener(
     "readthedocs-addons-data-ready",
     function (event) {
+        // Early exit if the item already exists - preventing duplicate version menus
+        if (document.querySelector(".md-version")) {
+            return;
+        }
+
         const config = event.detail.data();
         const versioning = `
 <div class="md-version">
