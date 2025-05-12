@@ -28,28 +28,6 @@ The bolded models are for the **latest** released condition.
 | dna_r10.4.1_e8.2_400bps_fast@v4.2.0 | 5mCG_5hmCG | v2 | 5 kHz |
 | dna_r10.4.1_e8.2_400bps_hac@v4.2.0 | 5mCG_5hmCG | v2 | 5 kHz |
 | dna_r10.4.1_e8.2_400bps_sup@v4.2.0 | 5mCG_5hmCG<br />5mC_5hmC<br />5mC<br />6mA<br />| v3.1<br />v1<br />v2<br />v3| 5 kHz |
-| dna_r10.4.1_e8.2_400bps_fast@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_hac@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_sup@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_fast@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_hac@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_sup@v4.1.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_fast@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_hac@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_sup@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_fast@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_hac@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_sup@v4.0.0 | 5mCG_5hmCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_fast@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_hac@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_260bps_sup@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_fast@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_hac@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r10.4.1_e8.2_400bps_sup@v3.5.2 | 5mCG | v2 | 4 kHz |
-| dna_r9.4.1_e8_sup@v3.6 |  |  | 4 kHz |
-| dna_r9.4.1_e8_fast@v3.4 | 5mCG_5hmCG<br />5mCG | v0<br />v0.1 | 4 kHz |
-| dna_r9.4.1_e8_hac@v3.3 | 5mCG_5hmCG<br />5mCG | v0<br />v0.1 |4 kHz |
-| dna_r9.4.1_e8_sup@v3.3 | 5mCG_5hmCG<br />5mCG | v0<br />v0.1 |4 kHz |
 
 ## RNA Models
 
@@ -74,5 +52,3 @@ The bolded models are for the **latest** released condition.
 | rna004_130bps_fast@v3.0.1 | | | 4 kHz |
 | rna004_130bps_hac@v3.0.1 | | | 4 kHz |
 | rna004_130bps_sup@v3.0.1 | m6A_DRACH | v1 | 4 kHz |
-| rna002_70bps_fast@v3 | | | 3 kHz |
-| rna002_70bps_hac@v3 | | | 3 kHz |
