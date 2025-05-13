@@ -21,7 +21,7 @@ such as [Hifiasm]({{hifiasm}}) or
 [Flye]({{flye}}) and aligned reads
 and outputs an updated version of the assembly.
 
-Additionally, `dorado polish` can output a VCF file containing records for all variants discovered during polishing, or a gVCF file contatining records for all locations in the input draft sequences.
+Additionally, `dorado polish` can output a VCF file containing records for all variants discovered during polishing, or a gVCF file containing records for all locations in the input draft sequences.
 
 ## Quick Start
 
@@ -81,14 +81,15 @@ dorado polish reads_to_draft.bam draft.fasta --device cuda:0 --threads 24 > cons
 By default, `polish` queries the BAM and selects the best model for the basecalled reads, if supported.
 
 Alternatively, a model can be selected through the command line using the `--model` argument with the following values:
+
 | Value    | Description |
 | -------- | ------- |
-| auto  | Determine the best compatible model based on input data. |
-| \<basecaller_model\> | Simplex basecaller model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0`) |
-| \<polishing_model\> | Polishing model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0_polish_rl_mv`) |
-| \<path\> | Local path on disk where the model will be loaded from. |
+| `auto`  | Determine the best compatible model based on input data. |
+| `<basecaller_model>` | Simplex basecaller model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0`) |
+| `<polishing_model>` | Polishing model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0_polish_rl_mv`) |
+| `<path>` | Local path on disk where the model will be loaded from. |
 
-When `auto` or `<basecaller_model>` syntax is used and the input is a v5.0.0 dataset, the data will be queried for the presence move tables and an best polishing model selected for the data. Move tables need to be exported during basecalling. If available, this allows for higher polishing accuracy. 
+When `auto` or `<basecaller_model>` syntax is used and the input is a v5.0.0 dataset, the data will be queried for the presence move tables and an best polishing model selected for the data. Move tables need to be exported during basecalling. If available, this allows for higher polishing accuracy.
 
 If a non-compatible model is selected for the input data, or there are multiple read groups in the input dataset which were generated using different basecaller models, `dorado polish` will report an error and stop execution.
 
@@ -144,7 +145,7 @@ dorado correct calls.fastq > corrected.fastq
 dorado aligner calls.bam draft_assembly.fasta > aligned_calls.bam
 
 # Run dorado polish using the raw reads aligned to the draft assembly
-dorado polish aligned_calls.bam draft_assembly.fasta > polished_assembly.fasta 
+dorado polish aligned_calls.bam draft_assembly.fasta > polished_assembly.fasta
 ```
 
 ## Troubleshooting
