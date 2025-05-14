@@ -41,6 +41,17 @@
 | `dx:i:`  | bool to signify duplex read _(only in duplex mode)_        |
 | `pi:Z:`  | parent read id for a split read                            |
 | `sp:i:`  | start coordinate of split read in parent read signal       |
-| `pt:i:`  | estimated poly(A/T) tail length in cDNA and dRNA reads     |
 | `bh:i:`  | number of detected bedfile hits _(only if alignment was performed with a specified bed-file)_ |
 | `MN:i:`  | Length of sequence at the time MM and ML were produced     |
+
+### Poly(A/T) Tags
+
+When `dorado` is run with poly(A/T) estimation enabled, additional tags are added to each SAM record as follows:
+
+* `pt:i` is the estimated poly(A/T) tail length in cDNA and dRNA reads
+* `pa:B:i` is an array of signal positions related to the poly(A/T) estimation, in order:
+    * The position in the signal used as the anchor for the poly(A/T) search
+    * The start of the poly(A/T) region
+    * The end of the poly(A/T) region
+    * The the start of a secondary poly(A/T) region in the case of plasmids, (-1 otherwise or if not found)
+    * The end of a secondary poly(A/T) region in the case of plasmids, (-1 otherwise or if not found)
