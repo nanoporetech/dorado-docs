@@ -13,6 +13,10 @@ NCMtalk: https://youtu.be/IB6DmU40NIU?t=377
 
     [See here](#should-i-use-correct-or-polish)
 
+!!! tip inline end "Should I use `variant` or `polish`?"
+
+    [See here]({{find("variant")}}#should-i-use-variant-or-polish)
+
 Dorado `polish` is a high accuracy assembly polishing tool which outperforms
 similar tools for most ONT-based assemblies.
 
@@ -27,8 +31,8 @@ Additionally, `dorado polish` can output a VCF file containing records for all v
 
 ### Consensus
 ```bash
-# Align the reads using dorado aligner, sort and index
-dorado aligner <draft.fasta> <reads.bam> | samtools sort --threads <num_threads> > aligned_reads.bam
+# Align unmapped reads to a reference using dorado aligner, sort and index
+dorado aligner <draft.fasta> <unmapped_reads.bam> | samtools sort --threads <num_threads> > aligned_reads.bam
 samtools index aligned_reads.bam
 
 # Call consensus
@@ -50,14 +54,14 @@ dorado polish <aligned_reads> <draft> --vcf > polished_assembly.vcf
 dorado polish <aligned_reads> <draft> --gvcf > polished_assembly.all.vcf
 ```
 
-Specifying the `--vcf` or `--gvcf` flags will output a VCF file to stdout instead of the consensus sequences.
+Specifying `--vcf` or `--gvcf` flags will output a VCF file to stdout instead of the consensus sequences.
 
 ### Output to a folder
 ```dorado
 dorado polish <aligned_reads> <draft> -o <output_dir>
 ```
 
-Specifying the `-o` will write multiple files to a given output directory (and create the directory if it doesn't exist):
+Specifying `-o` will write multiple files to a given output directory (and create the directory if it doesn't exist):
 - Consensus file: `<output_dir>/consensus.fasta` by default, or `<output_dir>/consensus.fastq` if `--qualities` is specified.
 - VCF file: `<output_dir>/variants.vcf` which contains only variant calls by default, or records for all positions if `--gvcf` is specified.
 
@@ -66,7 +70,7 @@ Specifying the `-o` will write multiple files to a given output directory (and c
 Dorado `polish` will automatically select the compute resources to perform polishing. It can use one or more GPU devices, or the CPU, to call consensus.
 
 To specify resources manually use:
-- `-x / --device` - to specify specific GPU resources (if available). For more information see here.
+- `-x / --device` - to specify specific GPU resources (if available).
 - `--threads` -  to set the maximum number of threads to be used for everything but the inference.
 - `--infer-threads` -  to set the number of CPU threads for inference (when "--device cpu" is used).
 - `--batchsize` - batch size for inference, important to control memory usage on the GPUs.

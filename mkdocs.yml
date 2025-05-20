@@ -33,6 +33,7 @@ nav:
   - Assembly:
       - Dorado Polish: assembly/polish.md
       - Dorado Correct: assembly/correct.md
+      - Dorado Variant: assembly/variant.md
   - Help:
       - Troubleshooting: troubleshooting/troubleshooting.md
       - FAQ: troubleshooting/faq.md

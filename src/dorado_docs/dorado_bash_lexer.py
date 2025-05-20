@@ -34,6 +34,7 @@ class DoradoBashLexer(BashLexer):
             "summary": dorado_subcommand,
             "trim": dorado_subcommand,
             "polish": dorado_subcommand,
+            "variant": dorado_subcommand,
             ">": dorado_operator,
             "|": dorado_operator,
         }
