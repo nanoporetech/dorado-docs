@@ -33,8 +33,8 @@ basecall model or modified bases model.
 
 ```bash
 > samtools view -H calls.bam | grep -oE "\S*models?=\S*"
-DS:basecall_model=dna_r10.4.1_e8.2_400bps_hac@v5.0.0
-modbase_models=dna_r10.4.1_e8.2_400bps_hac@v5.0.0_5mC_5hmC@v3.0.0
+DS:basecall_model=dna_r10.4.1_e8.2_400bps_hac@v5.2.0
+modbase_models=dna_r10.4.1_e8.2_400bps_hac@v5.2.0_5mC_5hmC@v1
 ```
 
 #### How do I basecall data from legacy sequencing conditions?

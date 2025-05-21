@@ -34,8 +34,8 @@ which is appropriate for your data and specify the model using its **filepath** 
 shown in the [simplex basecalling quick-start]({{find("simplex")}}) or in the example below:
 
 ```dorado
-dorado download --model dna_r10.4.1_e8.2_400bps_fast@v5.0.0
-dorado basecaller dna_r10.4.1_e8.2_400bps_fast@v5.0.0 reads/ > calls.bam
+dorado download --model dna_r10.4.1_e8.2_400bps_fast@v5.2.0
+dorado basecaller dna_r10.4.1_e8.2_400bps_fast@v5.2.0 reads/ > calls.bam
 ```
 
 For details please check out the [models introduction]({{find("models")}}) and
