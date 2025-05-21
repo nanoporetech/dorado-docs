@@ -12,8 +12,8 @@ corresponding to a different aspect of the model, which include both chemistry a
 run settings (defined [here](#sequencing-condition)). Below are some examples of simplex basecalling models:
 
 ```text
-dna_r10.4.1_e8.2_400bps_sup@v5.0.0
-rna004_130bps_hac@v5.0.0
+dna_r10.4.1_e8.2_400bps_sup@v5.2.0
+rna004_130bps_hac@v5.2.0
 ```
 
 ```text

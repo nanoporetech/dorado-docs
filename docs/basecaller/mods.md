@@ -136,13 +136,13 @@ See also documentation for the [model downloader]({{find("downloader")}}).
 
 ```dorado
 # Download the models
-dorado download --model rna004_130bps_hac@v5.0.0
-dorado download --model rna004_130bps_hac@v5.0.0_m6A@v1
-dorado download --model rna004_130bps_hac@v5.0.0_pseU@v1
+dorado download --model rna004_130bps_hac@v5.2.0
+dorado download --model rna004_130bps_hac@v5.2.0_m6A@v1
+dorado download --model rna004_130bps_hac@v5.2.0_pseU@v1
 
 # Run the basecaller
-dorado basecaller rna004_130bps_hac@v5.0.0 reads/ \
-    --modified-bases-models rna004_130bps_hac@v5.0.0_m6A@v1,rna004_130bps_hac@v5.0.0_pseU@v1 \
+dorado basecaller rna004_130bps_hac@v5.2.0 reads/ \
+    --modified-bases-models rna004_130bps_hac@v5.2.0_m6A@v1,rna004_130bps_hac@v5.2.0_pseU@v1 \
     > calls.bam
 ```
 

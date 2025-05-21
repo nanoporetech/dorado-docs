@@ -25,9 +25,12 @@ The bolded models are for the **latest** released condition.
 
 | Basecalling Models | Compatible<br />Modifications | Modifications<br />Model<br />Version | Data<br />Sampling<br />Frequency |
 | :-------- | :------- | :--- | :--- |
-| **dna_r10.4.1_e8.2_400bps_fast@v5.0.0** | | | 5 kHz |
-| **dna_r10.4.1_e8.2_400bps_hac@v5.0.0** | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v3<br />v3<br />v3<br />v3 | 5 kHz |
-| **dna_r10.4.1_e8.2_400bps_sup@v5.0.0** | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v3<br />v3<br />v3<br />v3 | 5 kHz |
+| **dna_r10.4.1_e8.2_400bps_fast@v5.2.0** | | | 5 kHz |
+| **dna_r10.4.1_e8.2_400bps_hac@v5.2.0** | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v1<br />v1<br />v1<br />v1 | 5 kHz |
+| **dna_r10.4.1_e8.2_400bps_sup@v5.2.0** | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v1<br />v1<br />v1<br />v1 | 5 kHz |
+| dna_r10.4.1_e8.2_400bps_fast@v5.0.0 | | | 5 kHz |
+| dna_r10.4.1_e8.2_400bps_hac@v5.0.0 | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v3<br />v3<br />v3<br />v3 | 5 kHz |
+| dna_r10.4.1_e8.2_400bps_sup@v5.0.0 | 4mC_5mC<br />5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v3<br />v3<br />v3<br />v3 | 5 kHz |
 | dna_r10.4.1_e8.2_400bps_fast@v4.3.0 | | | 5 kHz |
 | dna_r10.4.1_e8.2_400bps_hac@v4.3.0 | 5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v1<br />v1<br />v2 | 5 kHz |
 | dna_r10.4.1_e8.2_400bps_sup@v4.3.0 | 5mCG_5hmCG<br />5mC_5hmC<br />6mA<br /> | v1<br />v1<br />v2 | 5 kHz |
@@ -49,9 +52,12 @@ The bolded models are for the **latest** released condition.
 
 | Basecalling Models | Compatible<br />Modifications | Modifications<br />Model<br />Version | Data<br />Sampling<br />Frequency |
 | :-------- | :------- | :--- | :--- |
-| **rna004_130bps_fast@v5.1.0** | | | 4 kHz |
-| **rna004_130bps_hac@v5.1.0** | m5C<br />m6A_DRACH<br />inosine_m6A<br />pseU | v1<br />v1<br />v1<br />v1 | 4 kHz |
-| **rna004_130bps_sup@v5.1.0** | m5C<br />m6A_DRACH<br />inosine_m6A<br />pseU | v1<br />v1<br />v1<br />v1 | 4 kHz |
+| **rna004_130bps_fast@v5.2.0** | | | 4 kHz |
+| **rna004_130bps_hac@v5.2.0** | m5C<br />m6A_DRACH<br />inosine_m6A<br />pseU | v1<br />v1<br />v1<br />v1 | 4 kHz |
+| **rna004_130bps_sup@v5.2.0** | m5C_2OmeC<br />m6A_DRACH<br />inosine_m6A_2OmeA<br />pseU_2OmeU<br />2OmeG | v1<br />v1<br />v1<br />v1<br />v1 | 4 kHz |
+| rna004_130bps_fast@v5.1.0 | | | 4 kHz |
+| rna004_130bps_hac@v5.1.0 | m5C<br />m6A_DRACH<br />inosine_m6A<br />pseU | v1<br />v1<br />v1<br />v1 | 4 kHz |
+| rna004_130bps_sup@v5.1.0 | m5C<br />m6A_DRACH<br />inosine_m6A<br />pseU | v1<br />v1<br />v1<br />v1 | 4 kHz |
 | rna004_130bps_fast@v5.0.0 | | | 4 kHz |
 | rna004_130bps_hac@v5.0.0 | m6A<br />m6A_DRACH<br />pseU | v1<br />v1<br />v1 | 4 kHz |
 | rna004_130bps_sup@v5.0.0 | m6A<br />m6A_DRACH<br />pseU | v1<br />v1<br />v1 | 4 kHz |
