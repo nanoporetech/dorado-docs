@@ -107,7 +107,7 @@ extra_css:
 
 extra:
   dorado:
-    version: "0.9.6"
+    version: "1.0.0"
     code: https://github.com/nanoporetech/dorado/
   mm2_docs: https://github.com/lh3/minimap2
   github:
