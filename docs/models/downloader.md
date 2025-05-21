@@ -65,11 +65,11 @@ which shows an output like this where model names are printed for each model typ
 
 ```text
 > simplex models
- - dna_r10.4.1_e8.2_400bps_hac@v5.0.0
- - dna_r10.4.1_e8.2_400bps_sup@v5.0.0
+ - dna_r10.4.1_e8.2_400bps_hac@v5.2.0
+ - dna_r10.4.1_e8.2_400bps_sup@v5.2.0
  ...
 > modification models
- - dna_r10.4.1_e8.2_400bps_sup@v5.0.0_6mA@v1
+ - dna_r10.4.1_e8.2_400bps_hac@v5.2.0_6mA@v1
  ...
 ```
 
@@ -136,7 +136,7 @@ download models that are missing and reuse previously existing models.
 dorado basecaller hac pod5s/ --models-directory models/ > calls.bam
 
 ls models/
-    dna_r10.4.1_e8.2_400bps_hac@v5.0.0
+    dna_r10.4.1_e8.2_400bps_hac@v5.2.0
 
 # Model is re-used
 dorado basecaller hac pod5s/ --models-directory models/ > calls.bam

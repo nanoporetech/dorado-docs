@@ -33,6 +33,7 @@ nav:
   - Assembly:
       - Dorado Polish: assembly/polish.md
       - Dorado Correct: assembly/correct.md
+      - Dorado Variant: assembly/variant.md
   - Help:
       - Troubleshooting: troubleshooting/troubleshooting.md
       - FAQ: troubleshooting/faq.md
@@ -107,7 +108,7 @@ extra_css:
 
 extra:
   dorado:
-    version: "0.9.6"
+    version: "1.0.0"
     code: https://github.com/nanoporetech/dorado/
   mm2_docs: https://github.com/lh3/minimap2
   github:

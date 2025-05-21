@@ -13,6 +13,10 @@ NCMtalk: https://youtu.be/IB6DmU40NIU?t=377
 
     [See here](#should-i-use-correct-or-polish)
 
+!!! tip inline end "Should I use `variant` or `polish`?"
+
+    [See here]({{find("variant")}}#should-i-use-variant-or-polish)
+
 Dorado `polish` is a high accuracy assembly polishing tool which outperforms
 similar tools for most ONT-based assemblies.
 
@@ -26,9 +30,10 @@ Additionally, `dorado polish` can output a VCF file containing records for all v
 ## Quick Start
 
 ### Consensus
-```bash
-# Align the reads using dorado aligner, sort and index
-dorado aligner <draft.fasta> <reads.bam> | samtools sort --threads <num_threads> > aligned_reads.bam
+
+```dorado
+# Align unmapped reads to a reference using dorado aligner, sort and index
+dorado aligner <draft.fasta> <unmapped_reads.bam> | samtools sort --threads <num_threads> > aligned_reads.bam
 samtools index aligned_reads.bam
 
 # Call consensus
@@ -38,6 +43,7 @@ dorado polish <aligned_reads.bam> <draft.fasta> > polished_assembly.fasta
 In the above example, `<aligned_reads>` is a BAM of reads aligned to a draft by `dorado aligner` and `<draft>` is a FASTA or FASTQ file containing the draft assembly. The draft can be uncompressed or compressed with `bgzip`.
 
 ### Consensus on bacterial genomes
+
 ```dorado
 dorado polish <aligned_reads> <draft> --bacteria > polished_assembly.fasta
 ```
@@ -45,19 +51,21 @@ dorado polish <aligned_reads> <draft> --bacteria > polished_assembly.fasta
 This will automatically resolve a suitable bacterial polishing model, if one exits for the input data type.
 
 ### Variant calling
-```bash
+
+```dorado
 dorado polish <aligned_reads> <draft> --vcf > polished_assembly.vcf
 dorado polish <aligned_reads> <draft> --gvcf > polished_assembly.all.vcf
 ```
 
-Specifying the `--vcf` or `--gvcf` flags will output a VCF file to stdout instead of the consensus sequences.
+Specifying `--vcf` or `--gvcf` flags will output a VCF file to stdout instead of the consensus sequences.
 
 ### Output to a folder
 ```dorado
 dorado polish <aligned_reads> <draft> -o <output_dir>
 ```
 
-Specifying the `-o` will write multiple files to a given output directory (and create the directory if it doesn't exist):
+Specifying `-o` will write multiple files to a given output directory (and create the directory if it doesn't exist):
+
 - Consensus file: `<output_dir>/consensus.fasta` by default, or `<output_dir>/consensus.fastq` if `--qualities` is specified.
 - VCF file: `<output_dir>/variants.vcf` which contains only variant calls by default, or records for all positions if `--gvcf` is specified.
 
@@ -66,12 +74,14 @@ Specifying the `-o` will write multiple files to a given output directory (and c
 Dorado `polish` will automatically select the compute resources to perform polishing. It can use one or more GPU devices, or the CPU, to call consensus.
 
 To specify resources manually use:
-- `-x / --device` - to specify specific GPU resources (if available). For more information see here.
+
+- `-x / --device` - to specify specific GPU resources (if available).
 - `--threads` -  to set the maximum number of threads to be used for everything but the inference.
 - `--infer-threads` -  to set the number of CPU threads for inference (when "--device cpu" is used).
 - `--batchsize` - batch size for inference, important to control memory usage on the GPUs.
 
 Example:
+
 ```dorado
 dorado polish reads_to_draft.bam draft.fasta --device cuda:0 --threads 24 > consensus.fasta
 ```
@@ -85,21 +95,13 @@ Alternatively, a model can be selected through the command line using the `--mod
 | Value    | Description |
 | -------- | ------- |
 | `auto`  | Determine the best compatible model based on input data. |
-| `<basecaller_model>` | Simplex basecaller model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0`) |
-| `<polishing_model>` | Polishing model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.0.0_polish_rl_mv`) |
+| `<basecaller_model>` | Simplex basecaller model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.2.0`) |
+| `<polishing_model>` | Polishing model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.2.0_polish_rl_mv`) |
 | `<path>` | Local path on disk where the model will be loaded from. |
 
-When `auto` or `<basecaller_model>` syntax is used and the input is a v5.0.0 dataset, the data will be queried for the presence move tables and an best polishing model selected for the data. Move tables need to be exported during basecalling. If available, this allows for higher polishing accuracy.
+When `auto` or `<basecaller_model>` syntax is used and the input is a v5.2.0 dataset, the data will be queried for the presence move tables and an best polishing model selected for the data. Move tables need to be exported during basecalling. If available, this allows for higher polishing accuracy.
 
 If a non-compatible model is selected for the input data, or there are multiple read groups in the input dataset which were generated using different basecaller models, `dorado polish` will report an error and stop execution.
-
-### Supported basecaller models
-- `dna_r10.4.1_e8.2_400bps_sup@v5.0.0`
-- `dna_r10.4.1_e8.2_400bps_hac@v5.0.0`
-- `dna_r10.4.1_e8.2_400bps_sup@v4.3.0`
-- `dna_r10.4.1_e8.2_400bps_hac@v4.3.0`
-- `dna_r10.4.1_e8.2_400bps_sup@v4.2.0`
-- `dna_r10.4.1_e8.2_400bps_hac@v4.2.0`
 
 
 ### Move Table Aware Models
