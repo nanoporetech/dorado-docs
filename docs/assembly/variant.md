@@ -20,7 +20,7 @@ NCMtalk: https://youtu.be/IB6DmU40NIU?t=377
 
 Dorado variant is a short variant caller for diploid samples aligned to a haploid species reference (e.g. GRCh38) whereas `polish` is intended for workflows involving reads aligned to a haplotype-resolved (or haploid) draft assembly.
 
-Although `dorado polish` can also generate a VCF file of variants, there are some substantial distinctions between the two tools.
+Although Dorado `polish` can also generate a VCF file of variants, there are some substantial distinctions between the two tools.
 
 | `dorado polish`      | `dorado variant`             |
 | -------------------- | -------------------- |
@@ -87,7 +87,7 @@ When the `auto` or the `<basecaller_model>` syntax is used the most recent versi
 
 Current variant calling models require the presence of move tables in the input BAM file. Move tables need to be exported during basecalling.
 
-If a non-compatible model is selected for the input data, or if there are multiple read groups in the input dataset which were generated using different basecaller models, `dorado variant` will report an error and stop execution.
+If a non-compatible model is selected for the input data, or if there are multiple read groups in the input dataset which were generated using different basecaller models, Dorado `variant` will report an error and stop execution.
 
 ### Supported basecaller models
 
@@ -95,7 +95,14 @@ If a non-compatible model is selected for the input data, or if there are multip
 
 More models will be supported in the near future. This is an alpha release.
 
-## Memory Consumption
+## Common questions and Troubleshooting
+
+### I created a merged BAM file composed of multiple different data types. Why can't I call variants on this dataset? Using `--ignore-read-groups` does not help either.
+
+Please see the following section in Dorado `polish`:
+[I created a merged BAM file composed of multiple different data types]({{find("polish")}}#i-created-a-merged-bam-file-composed-of-multiple-different-data-types-why-cant-i-polish-it-using-ignore-read-groups-does-not-help-either)
+
+### Memory consumption / Torch out-of-memory (OOM) issues
 
 The default inference batch size (`10`) may be too high for your GPU. If you are experiencing warnings/errors regarding available GPU memory, try reducing the batch size:
 
@@ -103,8 +110,28 @@ The default inference batch size (`10`) may be too high for your GPU. If you are
 dorado variant aligned_reads.bam reference.fasta --batchsize <number> > variants.vcf
 ```
 
-or the number of inference workers:
+or the number of inference workers (the default is `2` workers per device):
 
 ```dorado
 dorado variant aligned_reads.bam reference.fasta --infer-threads 1 > variants.vcf
 ```
+
+Note that the GPU memory consumption also depends on the coverage of the input data, as feature tensor size varies relative to this.
+
+### "[error] Input BAM file was not aligned using Dorado."
+
+Dorado `variant` accepts only BAMs aligned with Dorado `aligner`. Aligners other than Dorado `aligner` are not supported.
+
+Example usage:
+```dorado
+dorado aligner <draft.fasta> <reads.bam> | samtools sort --threads <num_threads> > aln.bam
+samtools index aln.bam
+```
+
+### "[error] Duplex basecalling models are not supported."
+
+Dorado `variant` currently supports data generated using only the simplex basecallers.
+
+### Does Dorado Variant phase variants?
+
+At this early stage, Dorado `variant` does not yet produce phased VCF variants. This is work in progress.
