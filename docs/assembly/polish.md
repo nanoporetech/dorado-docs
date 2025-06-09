@@ -146,7 +146,7 @@ dorado correct calls.fastq > corrected.fastq
 <some_assembler> --input corrected.fastq > draft_assembly.fasta
 
 # Align original calls to the draft assembly
-dorado aligner calls.bam draft_assembly.fasta > aligned_calls.bam
+dorado aligner draft_assembly.fasta calls.bam > aligned_calls.bam
 
 # Run dorado polish using the raw reads aligned to the draft assembly
 dorado polish aligned_calls.bam draft_assembly.fasta > polished_assembly.fasta
