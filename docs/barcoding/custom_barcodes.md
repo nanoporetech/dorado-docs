@@ -8,7 +8,7 @@ The format to define a custom arrangement is inspired by the arrangement specifi
 in Guppy, with some adjustments to account for the algorithmic changes in Dorado.
 
 Custom [barcode arrangements](#arrangement-file) are defined using a `toml` file,
-and custom [barcode sequences](#sequences-file) are defined in a `FASTQ` file.
+and custom [barcode sequences](#sequences-file) are defined in a `FASTA` file.
 
 ## Barcode reference diagram
 
