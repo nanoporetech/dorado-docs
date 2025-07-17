@@ -127,6 +127,7 @@ Input data arguments:
   -n, --max-reads             Limit the number of reads to be basecalled.
   --resume-from               Resume basecalling from the given HTS file. Fully written read records are
                                 not processed again.
+  --disable-read-splitting    Disable read splitting
 
 Output arguments:
   --min-qscore                Discard reads with mean Q-score below this threshold.
