@@ -181,6 +181,4 @@ Poly(A) arguments:
 
 Advanced arguments:
   -b, --batchsize             The number of chunks in a batch. If 0 an optimal batchsize will be selected.
-  -c, --chunksize             The number of samples in a chunk.
-  --overlap                   The number of samples overlapping neighbouring chunks.
 ```

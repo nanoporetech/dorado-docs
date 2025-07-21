@@ -131,15 +131,6 @@ More details can be found in the dedicated [models documentation]({{find("models
         which is limited. Dorado will use a default batchsize if one is has been computed for the
         system hardware.
 
-    `--chunksize SIZE` - The chunk size controls the number of signal samples that are passed to the model
-        in a single chunk. This can be thought of as the length of each row in a table.
-        Increasing the chunk size can improve throughput with the typical cost of increased memory usage.
-        Adjusting the chunk size can alter the output as it changes the behaviour of the chunk stitching algorithm.
-
-    `--overlap SIZE` - The overlap value controls number of samples that are overlapping between chunks.
-        Increasing this value decreases throughput as more samples will be basecalled twice. However, this
-        value is critical in ensuring that chunks are stitched accurately.
-
 ---
 
 ## Additional processing
