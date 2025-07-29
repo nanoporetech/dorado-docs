@@ -90,6 +90,18 @@ dorado basecaller hac pod5s/ --resume-from incomplete.bam > calls.bam
 
 See [read trimming]({{find("read_trimming")}}).
 
+## Output Folder Structure
+
+If the `--output-dir <DIR>` argument is set, Dorado `basecaller` will write output files
+into a nested folder structure following the
+[MinKnow output structure specifications](https://nanoporetech.github.io/ont-output-specifications/latest/minknow/output_structure/).
+
+The chosen directory `<DIR>` becomes the root of the nested folder structure and replaces
+`/data/` in the specification examples.
+
+Reads with mean Q-score below the `--min-qscore` threshold are written to the files marked `fail`.
+If `--min-qscore` is not set, a default threshold of `0` is used and all reads are written to files marked `pass`.
+
 ---
 
 ## CLI reference
@@ -130,12 +142,12 @@ Input data arguments:
   --disable-read-splitting    Disable read splitting
 
 Output arguments:
-  --min-qscore                Discard reads with mean Q-score below this threshold.
+  --min-qscore                Discard reads with mean Q-score below this threshold or write them to
+                                output files marked `fail` if `--output-dir` is set.
   --emit-moves                Write the move table to the 'mv' tag.
   --emit-fastq                Output in fastq format.
   --emit-sam                  Output in SAM format.
-  -o, --output-dir            Optional output folder, if specified output will be written to a calls file
-                                (calls_<timestamp>.sam|.bam|.fastq) in the given folder.
+  -o, --output-dir            Optional output folder which becomes the root of the nested output folder structure.
 
 Alignment arguments:
   --reference                 Path to reference for alignment.

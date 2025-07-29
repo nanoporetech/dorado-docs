@@ -186,7 +186,6 @@ the output can be written directly to files using the `-o / --output-dir` argume
 
 `--emit-moves` - This flag will write the [move table]({{find("move_table")}}) into the SAM / BAM outputs.
 
-`-o / --output-dir DIR` - This optional argument can be used to specify an output directory using
-    the filename template `calls_<timestamp>.(sam|bam|fastq)`
+`-o / --output-dir DIR` - This optional argument can be used to specify an output directory which follows the [MinKnow output structure](https://nanoporetech.github.io/ont-output-specifications/latest/minknow/output_structure/).
 
 ---
