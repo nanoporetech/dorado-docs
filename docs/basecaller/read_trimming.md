@@ -111,7 +111,7 @@ Main arguments:
 
 Dorado automatically searches for primer sequences used in Oxford Nanopore kits. However, you can specify an alternative set of primer sequences to search for when trimming either in-line with basecalling, or in combination with the `--trim` option. In both cases this is accomplished using the `--primer-sequences` command line option. The argument can be either the full path and filename of a FASTA file containing the primer sequences you want to search for, or a string code specifying a supported 3rd-party primer set.
 
-If a FASTA file is specified, then the file must have either the `.fa` or `.fasta` extension and must conform to the specification defined in `custom_primers.md`.
+If a FASTA file is specified, then the file must have either the `.fa` or `.fasta` extension and must conform to the [specification]({{find("custom_primers")}}).
 
 The `--help` option will list the supported 3rd-party primer sets. Currently the only 3rd-party primer set supported is the set of primers used for 10X Genomics sequencing. Support for detecting and trimming these primers can be enabled by using:
 
