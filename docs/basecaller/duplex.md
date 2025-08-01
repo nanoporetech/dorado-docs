@@ -159,11 +159,11 @@ Input data arguments:
                                 will be performed automatically.
 
 Output arguments:
-  --min-qscore                Discard reads with mean Q-score below this threshold.
+  --min-qscore                Discard reads with mean Q-score below this threshold or write them to
+                                output files marked `fail` if `--output-dir` is set.
   --emit-fastq                Output in fastq format.
   --emit-sam                  Output in SAM format.
-  -o, --output-dir            Optional output folder, if specified output will be written to a calls
-                                file (calls_<timestamp>.sam|.bam|.fastq) in the given folder.
+  -o, --output-dir            Optional output folder which becomes the root of the nested output folder structure.
 
 Alignment arguments:
   --reference                 Path to reference for alignment.
@@ -183,6 +183,4 @@ Modified model arguments:
 Advanced arguments:
   -t, --threads
   -b, --batchsize             The number of chunks in a batch. If 0 an optimal batchsize will be selected.
-  -c, --chunksize             The number of samples in a chunk.
-  --overlap                   The number of samples overlapping neighbouring chunks.
 ```

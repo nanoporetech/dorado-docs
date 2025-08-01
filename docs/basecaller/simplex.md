@@ -90,6 +90,18 @@ dorado basecaller hac pod5s/ --resume-from incomplete.bam > calls.bam
 
 See [read trimming]({{find("read_trimming")}}).
 
+## Output Folder Structure
+
+If the `--output-dir <DIR>` argument is set, Dorado `basecaller` will write output files
+into a nested folder structure following the
+[MinKnow output structure specifications](https://nanoporetech.github.io/ont-output-specifications/latest/minknow/output_structure/).
+
+The chosen directory `<DIR>` becomes the root of the nested folder structure and replaces
+`/data/` in the specification examples.
+
+Reads with mean Q-score below the `--min-qscore` threshold are written to the files marked `fail`.
+If `--min-qscore` is not set, a default threshold of `0` is used and all reads are written to files marked `pass`.
+
 ---
 
 ## CLI reference
@@ -127,14 +139,15 @@ Input data arguments:
   -n, --max-reads             Limit the number of reads to be basecalled.
   --resume-from               Resume basecalling from the given HTS file. Fully written read records are
                                 not processed again.
+  --disable-read-splitting    Disable read splitting
 
 Output arguments:
-  --min-qscore                Discard reads with mean Q-score below this threshold.
+  --min-qscore                Discard reads with mean Q-score below this threshold or write them to
+                                output files marked `fail` if `--output-dir` is set.
   --emit-moves                Write the move table to the 'mv' tag.
   --emit-fastq                Output in fastq format.
   --emit-sam                  Output in SAM format.
-  -o, --output-dir            Optional output folder, if specified output will be written to a calls file
-                                (calls_<timestamp>.sam|.bam|.fastq) in the given folder.
+  -o, --output-dir            Optional output folder which becomes the root of the nested output folder structure.
 
 Alignment arguments:
   --reference                 Path to reference for alignment.
@@ -180,6 +193,4 @@ Poly(A) arguments:
 
 Advanced arguments:
   -b, --batchsize             The number of chunks in a batch. If 0 an optimal batchsize will be selected.
-  -c, --chunksize             The number of samples in a chunk.
-  --overlap                   The number of samples overlapping neighbouring chunks.
 ```

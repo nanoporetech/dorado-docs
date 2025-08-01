@@ -1,6 +1,6 @@
 # Read Splitting
 
-Dorado performs read splitting automatically.
+Dorado performs read splitting automatically but it can be disabled with the `--disable-read-splitting` argument.
 
 When a single input read contains multiple concatenated reads, Dorado `basecaller` will split the
 original input read into separate subreads. This operation is performed by default for both DNA
