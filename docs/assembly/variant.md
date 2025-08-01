@@ -39,6 +39,13 @@ dorado variant <aligned_reads.bam> <ref.fasta> > variants.vcf
 
 For this preview release, current models require signal-level information encoded in the move tables in the input BAM file. This requires the `--emit-moves` flag to be set during basecalling.
 
+In case the input basecalled reads are in a FASTQ format with the HTS-style ONT tags, please use the `--add-fastq-rg` option with Dorado `aligner` to ensure proper header formatting:
+```dorado
+# Align the reads using dorado aligner, sort and index
+dorado aligner --add-fastq-rg <ref.fasta> <reads.fastq> | samtools sort --threads <num_threads> > aligned_reads.bam
+samtools index aligned_reads.bam
+```
+
 ### Output to a folder
 
 ```dorado
@@ -127,6 +134,10 @@ Example usage:
 dorado aligner <draft.fasta> <reads.bam> | samtools sort --threads <num_threads> > aln.bam
 samtools index aln.bam
 ```
+
+### "[error] Input BAM file has no basecaller models listed in the header."
+
+Please refer to this [section]({{find("polish")}}#error-input-bam-file-has-no-basecaller-models-listed-in-the-header).
 
 ### "[error] Duplex basecalling models are not supported."
 

@@ -20,10 +20,7 @@ NCMtalk: https://youtu.be/IB6DmU40NIU?t=377
 Dorado `polish` is a high accuracy assembly polishing tool which outperforms
 similar tools for most ONT-based assemblies.
 
-It takes as input a draft assembly produced by a tool
-such as [Hifiasm]({{hifiasm}}) or
-[Flye]({{flye}}) and aligned reads
-and outputs an updated version of the assembly.
+It takes as input a draft assembly produced by a tool such as [Hifiasm](https://github.com/chhylp123/hifiasm) or [Flye](https://github.com/mikolmogorov/Flye) and aligned reads, and outputs an updated version of the assembly.
 
 Additionally, Dorado `polish` can output a VCF file containing records for all variants discovered during polishing, or a gVCF file containing records for all locations in the input draft sequences.
 
@@ -43,6 +40,24 @@ dorado polish <aligned_reads.bam> <draft.fasta> > polished_assembly.fasta
 ```
 
 In the above example, `<aligned_reads>` is a BAM of reads aligned to a draft by Dorado `aligner` and `<draft>` is a FASTA or FASTQ file containing the draft assembly. The draft can be uncompressed or compressed with `bgzip`.
+
+### Consensus from a FASTQ input instead of BAM
+
+In case a FASTQ file was produced during basecalling instead of a BAM file, you will need to provide a flag `--add-fastq-rg` to Dorado `aligner` to have it generate the proper BAM header required for Dorado `polish`.
+
+Note that this may take some time to run because it requires an extra pass over the input data prior to alignment.
+
+This feature supports only FASTQ files with HTS-style tags in the header and will not work for the old MinKnow style FASTQ files.
+
+Here is a full example:
+```dorado
+# Align reads to a reference using dorado aligner, sort and index
+dorado aligner --add-fastq-rg <draft.fasta> <reads.fastq> | samtools sort --threads <num_threads> > aligned_reads.bam
+samtools index aligned_reads.bam
+
+# Call consensus
+dorado polish <aligned_reads.bam> <draft.fasta> > polished_assembly.fasta
+```
 
 ### Consensus on bacterial genomes
 
@@ -90,21 +105,25 @@ dorado polish reads_to_draft.bam draft.fasta --device cuda:0 --threads 24 > cons
 
 ## Models
 
-By default, `polish` queries the BAM and selects the best model for the basecalled reads, if supported.
+Dorado `polish` auto-resolves the polishing model based on the input BAM file. The BAM file needs to contain the `@RG` headers with the basecaller model name specified, otherwise the model will not be resolved. If the input BAM records contain move tables, an appropriate move-aware polishing model will be selected.
 
-Alternatively, a model can be selected through the command line using the `--model` argument with the following values:
+Once the model is resolved, Dorado `polish` will either download it or look it up in the models-directory if specified.
 
-| Value    | Description |
-| -------- | ------- |
-| `auto`  | Determine the best compatible model based on input data. |
-| `<basecaller_model>` | Simplex basecaller model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.2.0`) |
-| `<polishing_model>` | Polishing model name (e.g. `dna_r10.4.1_e8.2_400bps_sup@v5.2.0_polish_rl_mv`) |
-| `<path>` | Local path on disk where the model will be loaded from. |
+For example:
+```dorado
+dorado polish reads_to_draft.bam draft.fasta > consensus.fasta
+```
+will find the compatible model based on the input BAM file and download it to a temporary folder.
 
-When `auto` or `<basecaller_model>` syntax is used and the input is a v5.2.0 dataset, the data will be queried for the presence move tables and an best polishing model selected for the data. Move tables need to be exported during basecalling. If available, this allows for higher polishing accuracy.
+When `--models-directory` is specified, the resolved polishing model will first be looked up in the models-directory, and only downloaded if the model does not exist. The specified models-directory must exist. Example:
+```dorado
+mkdir -p models
+dorado polish --models-directory models reads_to_draft.bam draft.fasta > consensus.fasta
+```
 
-If a non-compatible model is selected for the input data, or there are multiple read groups in the input dataset which were generated using different basecaller models, Dorado `polish` will report an error and stop execution.
+More information about the `--models-directory` can be found in [this section](#model-search-directory-and-temporary-model-downloads)
 
+If there are multiple read groups in the input dataset which were generated using different basecaller models, Dorado `polish` will report an error and stop execution.
 
 ### Move Table Aware Models
 
@@ -211,19 +230,30 @@ dorado aligner --output-dir <out_dir> <draft.fasta> <reads.bam>
 
 Dorado `polish` requires that the aligned BAM has one or more `@RG` lines in the header. Each `@RG` line needs to contain a basecaller model used for generating the reads in this group. This information is required to determine the compatibility of the selected polishing model, as well as for auto-resolving the model from data.
 
-When using Dorado `aligner` please provide the input basecalled reads in the BAM format. The basecalled reads BAM file (`e.g. calls.bam`) contains the `@RG` header lines, and this will be propagated into the aligned BAM file.
-
-However, if input reads are given in the `FASTQ`, the output aligned BAM file will _not_ contain `@RG` lines, and it will not be possible to use it for polishing.
-
-Note that, even if the input FASTQ file has header lines in the form of:
+When using Dorado `aligner` please provide the input basecalled reads in the BAM format. The basecalled reads BAM file (`e.g. calls.bam`) contains the `@RG` header lines, and this will be propagated into the aligned BAM file. Example:
 ```dorado
+dorado aligner draft.fasta calls.bam | samtools sort --threads <num_threads> > aligned_reads.bam
+samtools index aligned_reads.bam
+```
+Alternatively, Dorado `aligner` will automatically sort and index the alignments when an output directory is specified instead of `stdout`.
+```dorado
+dorado aligner --output-dir out draft.fasta calls.bam
+```
+
+However, if input basecalled reads are given in the **FASTQ** format, the aligned BAM file will _not_ contain `@RG` lines by default.
+In this case, a flag `--add-fastq-rg` can be passed to Dorado `aligner`. Dorado `aligner` will then perform an additional pass over the input FASTQ data and collect all the read group / basecaller information and add it to the header.
+
+Note that this feature will only work for the HTS-style FASTQ headers, such as:
+```
 @74960cfd-0b82-43ed-ae04-05162e3c0a5a qs:f:27.7534 du:f:75.1604 ns:i:375802 ts:i:1858 mx:i:1 ch:i:295 st:Z:2024-08-29T22:06:03.400+00:00 rn:i:585 fn:Z:FBA17175_7da7e070_f8e851a5_5.pod5 sm:f:414.101 sd:f:107.157 sv:Z:pa dx:i:0 RG:Z:f8e851a5d56475e9ecaa43496da18fad316883d8_dna_r10.4.1_e8.2_400bps_sup@v5.0.0
 ```
-Dorado `aligner` will not automatically add the `@RG` header lines. BAM input needs to be used for now (not FASTQ):
 
+Example usage:
 ```dorado
-dorado aligner draft.fasta calls.bam
+dorado aligner --add-fastq-rg --output-dir out draft.fasta calls.bam
 ```
+
+Dorado `polish` currently supports data generated using only the simplex basecallers.
 
 ### "[error] Input BAM file was not aligned using Dorado."
 
