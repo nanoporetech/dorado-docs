@@ -94,3 +94,13 @@ This argument specifies a `.bed` filepath which is used to count the number of o
 the bed file regions and the alignments generated.
 
 This number is written to the BAM file output as the `bh` read tag.
+
+## Read groups from a FASTQ input
+
+When aligning a basecalled FASTQ file which contains HTS-style tags, the `@RG` BAM header lines will not automatically be output, unlike when input is a basecalled BAM.
+
+The `@RG` headers are required for tools such as `polish` and `variant` to determine the correct model for the data.
+
+To add the read group information to the output BAM file, Dorado `aligner` needs to be run with an additional option `--add-fastq-rg`.
+
+Note that using this feature performs an additional pass over the input FASTQ data and the entire process will take longer to run.
