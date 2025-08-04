@@ -121,14 +121,13 @@ extra:
       link: https://x.com/nanopore
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/oxford-nanopore-technologies
-# Not collecting cookies via RTD
-# consent:
-#   title: Cookie consent
-#   description: >-
-#     We use cookies to recognize your repeated visits and preferences, as well
-#     as to measure the effectiveness of our documentation and whether users
-#     find what they're searching for. With your consent, you're helping us to
-#     make our documentation better.
+  consent:
+    title: Cookie consent
+    description: >-
+      We use cookies to recognize your repeated visits and preferences, as well
+      as to measure the effectiveness of our documentation and whether users
+      find what they're searching for. With your consent, you're helping us to
+      make our documentation better.
 
 markdown_extensions:
   - admonition # Add nice Note, Warning, Error areas
@@ -158,3 +157,5 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - def_list
   - tables
+
+copyright: "&copy 2020 - 2025 Oxford Nanopore Technologies plc. All rights reserved. Registered Office: Gosling Building, Edmund Halley Road, Oxford Science Park, OX4 4DQ, UK | Registered No. 05386273 | VAT No 336942382. Oxford Nanopore Technologies, the Wheel icon, EPI2ME, Flongle, GridION, Metrichor, MinION, MinIT, MinKNOW, Plongle, PromethION, SmidgION, Ubik and VolTRAX are registered trademarks of Oxford Nanopore Technologies plc in various countries. Oxford Nanopore Technologies products are not intended for use for health assessment or to diagnose, treat, mitigate, cure, or prevent any disease or condition."
