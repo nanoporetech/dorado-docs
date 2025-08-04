@@ -62,6 +62,7 @@ theme:
     - content.code.copy
   language: en
   logo: extra/assets/nanopore.logo.png
+  favicon: extra/assets/nanopore.logo.png
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
